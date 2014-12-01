@@ -1,13 +1,13 @@
 package com.neu.action;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.Date;
 
 /**
  * Created by ubuntu on 14-10-4.
  */
-@Component("loginAction")
+@Controller("loginAction")
 public class LoginAction
 {
     private String username;
