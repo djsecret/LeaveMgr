@@ -17,8 +17,6 @@
     <form action="login.action">
         username:<input type="text" name="username"><br>
         password:<input type="password" name="password"><br>
-        age:<input type="text" name="age"><br>
-        date:<input type="text" name="date"><br>
         <input type="submit">
     </form>
 

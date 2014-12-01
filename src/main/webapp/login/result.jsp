@@ -17,12 +17,9 @@
 <body>
     <%=request.getParameter("username")%><br>
     <%=request.getParameter("password")%><br>
-    <%=request.getParameter("age")%><br>
-    <%=request.getParameter("date")%><br>
 
     username: ${ requestScope.username }<br>
     password: ${ requestScope.password }<br>
-    username: ${ requestScope.age }<br>
-    username: ${ requestScope.date }<br>
+
 </body>
 </html>
