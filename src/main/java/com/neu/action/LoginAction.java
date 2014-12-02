@@ -1,32 +1,28 @@
 package com.neu.action;
 
-import com.neu.pojo.User;
-import com.neu.service.UserService;
+import com.neu.pojo.Staff_Job;
+import com.neu.service.Staff_JobService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
-/**
- * Created by ubuntu on 14-10-4.
- */
 @Controller("loginAction")
 public class LoginAction extends ActionSupport
 {
-    private String username;
+    private String staff_id;
     private String password;
 
     @Resource
-    private UserService userService;
+    private Staff_JobService staff_jobService;
 
     public String execute()
     {
-        System.out.println(username);
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        if(userService.login(user))
+        System.out.println(staff_id);
+        Staff_Job staff_job = new Staff_Job();
+        staff_job.setStaff_id(staff_id);
+        staff_job.setPassword(password);
+        if(staff_jobService.login(staff_job))
         {
             return SUCCESS;
         }
@@ -34,14 +30,14 @@ public class LoginAction extends ActionSupport
 
     }
 
-    public String getUsername()
+    public String getStaff_id()
     {
-        return username;
+        return staff_id;
     }
 
-    public void setUsername(String username)
+    public void setStaff_id(String staff_id)
     {
-        this.username = username;
+        this.staff_id = staff_id;
     }
 
     public String getPassword()

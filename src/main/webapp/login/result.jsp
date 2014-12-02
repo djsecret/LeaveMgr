@@ -15,10 +15,10 @@
     <title>Result</title>
 </head>
 <body>
-    <%=request.getParameter("username")%><br>
+    <%=request.getParameter("staff_id")%><br>
     <%=request.getParameter("password")%><br>
 
-    username: ${ requestScope.username }<br>
+    username: ${ requestScope.staff_id }<br>
     password: ${ requestScope.password }<br>
 
 </body>

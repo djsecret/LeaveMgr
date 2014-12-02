@@ -6,10 +6,10 @@
 
 <struts>
     <constant name="struts.objectFactory" value="spring" />
-    <package name="struts2" extends="struts-default">
+    <package name="struts2" extends="struts-default" namespace="/login">
         <action name="login" class="loginAction">
-            <result name="success">login/result.jsp</result>
-            <result name="input">login/login.jsp</result>
+            <result name="success">result.jsp</result>
+            <result name="input">login.jsp</result>
         </action>
     </package>
 </struts>

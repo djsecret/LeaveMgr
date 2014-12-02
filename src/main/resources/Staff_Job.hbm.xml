@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+        PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.neu.pojo.Staff_Job" table="staff_job" catalog="leavemgr" lazy="false">
+        <id name="id" column="id" type="integer">
+            <generator class="increment"/>
+        </id>
+        <property name="staff_id" column="staff_id" type="string"/>
+        <property name="staff_name" column="staff_name" type="string"/>
+        <property name="password" column="password" type="string"/>
+        <property name="dept_name" column="dept_name" type="string"/>
+        <property name="duty_name" column="duty_name" type="string"/>
+    </class>
+
+</hibernate-mapping>

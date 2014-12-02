@@ -1,9 +1,5 @@
-<%--  
-  User: ubuntu
-  Date: 14-10-4
-  Time: 下午4:43  
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -11,14 +7,15 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>Login</title>
+    <title>登录</title>
 </head>
 <body>
-    <form action="login.action">
-        username:<input type="text" name="username"><br>
-        password:<input type="password" name="password"><br>
-        <input type="submit">
-    </form>
+<s:form action="login" namespace="/login">
+    <s:textfield name="staff_id" label="员工编号"/>
+    <s:password name="password" label="密码"/>
+    <s:submit/>
+</s:form>
+
 
 </body>
 </html>
