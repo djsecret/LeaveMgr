@@ -10,13 +10,13 @@
             <generator class="increment"/>
         </id>
         <property name="sender_name" column="sender_name" type="string"/>
+        <property name="receiver_id" column="receiver_id" type="int"/>
         <property name="generate_time" column="generate_time" type="date"/>
         <property name="message_name" column="message_name" type="string"/>
         <property name="type" column="type" type="integer"/>
         <property name="content" column="content" type="string"/>
         <property name="flag" column="flag" type="integer"/>
 
-        <many-to-one name="staff_job" class="com.neu.pojo.Staff_Job" column="receiver_id"/>
     </class>
 
 </hibernate-mapping>

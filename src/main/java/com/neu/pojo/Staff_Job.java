@@ -12,17 +12,6 @@ public class Staff_Job implements Serializable
     private String password;
     private String dept_name;
     private String duty_name;
-    private Set<Message> messages;//one to many
-
-    public Set<Message> getMessages()
-    {
-        return messages;
-    }
-
-    public void setMessages(Set<Message> messages)
-    {
-        this.messages = messages;
-    }
 
     public int getId()
     {
@@ -94,7 +83,6 @@ public class Staff_Job implements Serializable
                 ", password='" + password + '\'' +
                 ", dept_name='" + dept_name + '\'' +
                 ", duty_name='" + duty_name + '\'' +
-                ", messages=" + messages +
                 '}';
     }
 }

@@ -26,7 +26,7 @@
             <th>查看</th>
             <th>删除</th>
         </tr>
-        <s:iterator value="#session.staff_login.messages" id="message">
+        <s:iterator value="messages" id="message">
             <tr>
                 <td>
                     <s:property value="id"/>

@@ -1,12 +1,18 @@
 package com.neu.action;
 
 import com.neu.pojo.Leave_Info;
+import com.neu.service.Leave_InfoService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
 
 @Controller
 public class AddLeaveAction extends ActionSupport
 {
+    @Resource
+    private Leave_InfoService leave_infoService;
+
     private Leave_Info leave_info;
 
     public Leave_Info getLeave_info()
@@ -22,8 +28,8 @@ public class AddLeaveAction extends ActionSupport
     @Override
     public String execute() throws Exception
     {
-
-
+        System.out.println(leave_info);
+        leave_infoService.addLeave_Info(leave_info);
         return SUCCESS;
     }
 }

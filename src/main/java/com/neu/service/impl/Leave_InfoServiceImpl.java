@@ -1,6 +1,8 @@
 package com.neu.service.impl;
 
 import com.neu.common.Constant;
+import com.neu.dao.Leave_InfoDAO;
+import com.neu.dao.MessageDAO;
 import com.neu.dao.Staff_JobDAO;
 import com.neu.pojo.Leave_Info;
 import com.neu.pojo.Message;
@@ -20,10 +22,12 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
     @Resource
     private Staff_JobDAO staff_jobDAO;
     @Resource
-    private Leave_InfoService leave_infoService;
+    private Leave_InfoDAO leave_infoDAO;
+    @Resource
+    private MessageDAO messageDAO;
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    @Transactional(propagation = Propagation.SUPPORTS)
     public void addLeave_Info(Leave_Info leave_info)
     {
         Staff_Job proposer = (Staff_Job) ActionContext.getContext().getSession().get(Constant.STAFF_LOGIN);
@@ -45,7 +49,7 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         }
         leave_info.setAuditor_id(auditor.getId());
         leave_info.setAuditor_name(auditor.getStaff_name());
-        leave_infoService.addLeave_Info(leave_info);
+        leave_infoDAO.addLeave_Info(leave_info);
 
         Message message = new Message();
         message.setSender_name(proposer.getStaff_name());
@@ -54,6 +58,8 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         message.setType(0);
         message.setContent(String.valueOf(leave_info.getId()));
         message.setFlag(1);
-        message.setStaff_job(auditor);
+        message.setReceiver_id(auditor.getId());
+        messageDAO.addMessage(message);
+
     }
 }

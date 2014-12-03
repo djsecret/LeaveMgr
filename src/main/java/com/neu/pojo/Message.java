@@ -7,21 +7,21 @@ public class Message implements Serializable
 {
     private int id;
     private String sender_name;
+    private int receiver_id;
     private Date generate_time;
     private String message_name;
     private int type;
     private String content;
     private int flag;
-    private Staff_Job staff_job;//many to one
 
-    public Staff_Job getStaff_job()
+    public int getReceiver_id()
     {
-        return staff_job;
+        return receiver_id;
     }
 
-    public void setStaff_job(Staff_Job staff_job)
+    public void setReceiver_id(int receiver_id)
     {
-        this.staff_job = staff_job;
+        this.receiver_id = receiver_id;
     }
 
     public int getId()

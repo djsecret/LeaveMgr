@@ -25,7 +25,7 @@ public class Staff_JobDAOImpl implements Staff_JobDAO
 
     /**
      * 获取总经理
-     * @return
+     * @return 总经理
      */
     @Override
     public Staff_Job getGeneral_Manager()
@@ -38,7 +38,7 @@ public class Staff_JobDAOImpl implements Staff_JobDAO
     /**
      * 获取部长或者科长
      * @param dept_name 部门名称
-     * @return
+     * @return 部长或者科长
      */
     @Override
     public Staff_Job getManagerByDept_name(String dept_name)

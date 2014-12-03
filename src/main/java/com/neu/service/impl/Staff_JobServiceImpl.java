@@ -21,11 +21,11 @@ public class Staff_JobServiceImpl implements Staff_JobService
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public boolean login(Staff_Job staff_job)
     {
-        Staff_Job query = staff_jobDAO.getStaff_JobByStaff_id(staff_job.getStaff_id());
+        Staff_Job staff = staff_jobDAO.getStaff_JobByStaff_id(staff_job.getStaff_id());
 
-        if(query != null && query.getPassword().equals(staff_job.getPassword()))
+        if(staff != null && staff.getPassword().equals(staff_job.getPassword()))
         {
-            ActionContext.getContext().getSession().put(Constant.STAFF_LOGIN,query);
+            ActionContext.getContext().getSession().put(Constant.STAFF_LOGIN,staff);
             return true;
         }
         return false;

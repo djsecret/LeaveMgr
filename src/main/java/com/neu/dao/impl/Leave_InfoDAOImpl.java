@@ -16,6 +16,7 @@ public class Leave_InfoDAOImpl implements Leave_InfoDAO
     @Override
     public void addLeave_Info(Leave_Info leave_info)
     {
-
+        System.out.println(leave_info);
+        sessionFactory.getCurrentSession().save(leave_info);
     }
 }
