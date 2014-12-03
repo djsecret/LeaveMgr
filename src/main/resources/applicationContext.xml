@@ -26,6 +26,7 @@
             <list>
                 <value>User.hbm.xml</value>
                 <value>Staff_Job.hbm.xml</value>
+                <value>Message.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

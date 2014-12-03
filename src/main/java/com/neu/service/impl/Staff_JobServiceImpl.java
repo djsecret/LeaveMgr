@@ -1,8 +1,10 @@
 package com.neu.service.impl;
 
+import com.neu.common.Constant;
 import com.neu.dao.Staff_JobDAO;
 import com.neu.pojo.Staff_Job;
 import com.neu.service.Staff_JobService;
+import com.opensymphony.xwork2.ActionContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ public class Staff_JobServiceImpl implements Staff_JobService
 
         if(query != null && query.getPassword().equals(staff_job.getPassword()))
         {
+            ActionContext.getContext().getSession().put(Constant.STAFF_LOGIN,query);
             return true;
         }
         return false;

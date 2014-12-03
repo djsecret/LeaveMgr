@@ -14,6 +14,12 @@
         <property name="password" column="password" type="string"/>
         <property name="dept_name" column="dept_name" type="string"/>
         <property name="duty_name" column="duty_name" type="string"/>
+
+        <set name="messages" order-by="generate_time desc" cascade="all" lazy="false" inverse="true">
+            <key column="receiver_id"/>
+            <one-to-many class="com.neu.pojo.Message"/>
+        </set>
+
     </class>
 
 </hibernate-mapping>

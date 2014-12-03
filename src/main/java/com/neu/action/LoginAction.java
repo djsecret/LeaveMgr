@@ -24,6 +24,7 @@ public class LoginAction extends ActionSupport
         staff_job.setPassword(password);
         if(staff_jobService.login(staff_job))
         {
+
             return SUCCESS;
         }
         return INPUT;

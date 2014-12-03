@@ -7,15 +7,16 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>登录</title>
+    <title></title>
 </head>
 <body>
-<s:form action="login" namespace="/login">
-    <s:textfield name="staff_id" label="员工编号"/>
-    <s:password name="password" label="密码"/>
-    <s:submit/>
-</s:form>
-
+    <s:property value="message.id"/><br>
+    <s:property value="message.sender_name"/><br>
+    <s:property value="message.generate_time"/><br>
+    <s:property value="message.message_name"/><br>
+    <s:property value="message.type"/><br>
+    <s:property value="message.content"/><br>
+    <s:property value="message.flag"/><br>
 
 </body>
 </html>

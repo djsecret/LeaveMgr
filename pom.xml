@@ -151,6 +151,7 @@
                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                 </configuration>
             </plugin>
+
         </plugins>
         <finalName>LeaveMgr</finalName>
     </build>

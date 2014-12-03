@@ -1,7 +1,10 @@
 package com.neu.pojo;
 
 
-public class Staff_Job
+import java.io.Serializable;
+import java.util.Set;
+
+public class Staff_Job implements Serializable
 {
     private int id;
     private String staff_id;
@@ -9,6 +12,17 @@ public class Staff_Job
     private String password;
     private String dept_name;
     private String duty_name;
+    private Set<Message> messages;//one to many
+
+    public Set<Message> getMessages()
+    {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages)
+    {
+        this.messages = messages;
+    }
 
     public int getId()
     {
@@ -68,5 +82,19 @@ public class Staff_Job
     public void setDuty_name(String duty_name)
     {
         this.duty_name = duty_name;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Staff_Job{" +
+                "id=" + id +
+                ", staff_id='" + staff_id + '\'' +
+                ", staff_name='" + staff_name + '\'' +
+                ", password='" + password + '\'' +
+                ", dept_name='" + dept_name + '\'' +
+                ", duty_name='" + duty_name + '\'' +
+                ", messages=" + messages +
+                '}';
     }
 }
