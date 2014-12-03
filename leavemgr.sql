@@ -69,7 +69,7 @@ CREATE TABLE message (
 	message_name VARCHAR(30),
 	type INT(3),
 	content TEXT,
-	flag INT(1))DEFAULT CHARSET=utf8;
+	flag INT(1) DEFAULT 1)DEFAULT CHARSET=utf8;
 
 
 INSERT INTO message(sender_name,receiver_id,generate_time,message_name,type,content,flag) 
@@ -80,13 +80,15 @@ INSERT INTO message(sender_name,receiver_id,generate_time,message_name,type,cont
 	VALUES('张辉','1','2008-03-29 04:04:36','leave',2,'ask for a leave again',1);
 
 CREATE TABLE leave_info (
-	id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,	
-	leave_staff_id VARCHAR(20) NOT NULL,
+	id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,		
 	begin_time DATE,
-	end_time DATE,
+	days INT(10),
 	apply_time DATE,
 	reason TEXT,
-	auditor VARCHAR(20) NOT NULL,
-	result INT(1),
+	proposer_id INT(20) NOT NULL,
+	proposer_name VARCHAR(30) NOT NULL,
+	auditor_id INT(20) NOT NULL,
+	auditor_name VARCHAR(30) NOT NULL,
+	result INT(1) DEFAULT 0,
 	handle_time DATE,
-	valid INT(1))DEFAULT CHARSET=utf8;
+	valid INT(1) DEFAULT 0)DEFAULT CHARSET=utf8;

@@ -7,7 +7,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title></title>
+    <title><s:property value="message.message_name"/></title>
 </head>
 <body>
     <s:property value="message.id"/><br>

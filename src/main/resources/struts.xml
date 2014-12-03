@@ -22,9 +22,12 @@
         </global-results>
 
         <action name="login" class="loginAction">
-            <result name="success">show_message.jsp</result>
+            <result name="success">index.jsp</result>
             <result name="input">login.jsp</result>
             <interceptor-ref name="defaultStack"/>
+        </action>
+        <action name="logout" class="logoutAction">
+            <result name="success">login.jsp</result>
         </action>
 
         <action name="getSingleMessage" class="getSingleMessage">
@@ -32,6 +35,10 @@
         </action>
         <action name="deleteMessage" class="deleteMessage">
             <result name="success">show_message.jsp</result>
+        </action>
+
+        <action name="addLeave" class="com.neu.action.AddLeaveAction">
+            <result name="success">index.jsp</result>
         </action>
     </package>
 </struts>
