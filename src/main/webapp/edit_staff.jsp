@@ -22,7 +22,7 @@
     家庭住址：<s:textfield name="staff_info.address" value="%{#parameters.address}"/><br>
     联系方式：<s:textfield name="staff_info.tel" value="%{#parameters.tel}"/><br>
     &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;：<s:textfield name="staff_info.email" value="%{#parameters.email}"/><br>
-    <s:submit value="确定"/> <s:reset value="重置"/>
+    <s:submit value="确定"/> <s:reset value="重置"/> <input type="button" onclick="window.location.href='showMessage'" value="取消">
 </s:form>
 
 </body>
