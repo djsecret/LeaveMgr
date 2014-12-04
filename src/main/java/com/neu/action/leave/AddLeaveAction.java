@@ -1,4 +1,4 @@
-package com.neu.action;
+package com.neu.action.leave;
 
 import com.neu.pojo.Leave_Info;
 import com.neu.service.Leave_InfoService;
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
 
 @Controller
-public class AllowLeaveAction extends ActionSupport
+public class AddLeaveAction extends ActionSupport
 {
-    private Leave_Info leave_info;
-
     @Resource
     private Leave_InfoService leave_infoService;
+
+    private Leave_Info leave_info;
 
     public Leave_Info getLeave_info()
     {
@@ -28,7 +28,8 @@ public class AllowLeaveAction extends ActionSupport
     @Override
     public String execute() throws Exception
     {
-        leave_info = leave_infoService.allowLeave(leave_info);
+        System.out.println(leave_info);
+        leave_infoService.addLeave_Info(leave_info);
         return SUCCESS;
     }
 }

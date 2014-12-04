@@ -1,4 +1,4 @@
-package com.neu.action;
+package com.neu.action.message;
 
 import com.neu.service.MessageService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
 
 @Controller
-public class DeleteMessage extends ActionSupport
+public class DeleteMessageAction extends ActionSupport
 {
     private int id;
 

@@ -1,4 +1,4 @@
-package com.neu.action;
+package com.neu.action.login;
 
 import com.neu.pojo.Staff_Job;
 import com.neu.service.Staff_JobService;

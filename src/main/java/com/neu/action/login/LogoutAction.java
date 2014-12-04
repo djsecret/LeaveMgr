@@ -1,4 +1,4 @@
-package com.neu.action;
+package com.neu.action.login;
 
 import com.neu.common.Constant;
 import com.opensymphony.xwork2.ActionContext;

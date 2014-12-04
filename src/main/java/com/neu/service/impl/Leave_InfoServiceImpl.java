@@ -81,8 +81,8 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         leave_infoDAO.updateLeave_Info(leave_query);
 
         Message message = new Message();
-        message.setSender_name(leave_info.getAuditor_name());
-        message.setReceiver_id(leave_info.getProposer_id());
+        message.setSender_name(leave_query.getAuditor_name());
+        message.setReceiver_id(leave_query.getProposer_id());
         message.setGenerate_time(new Date());
         message.setMessage_name(Constant.MESSAGE_ALLOW_NAME);
         message.setType(Constant.MESSAGE_LEAVE_ALLOW_TYPE);
@@ -104,8 +104,8 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         leave_infoDAO.updateLeave_Info(leave_query);
 
         Message message = new Message();
-        message.setSender_name(leave_info.getAuditor_name());
-        message.setReceiver_id(leave_info.getProposer_id());
+        message.setSender_name(leave_query.getAuditor_name());
+        message.setReceiver_id(leave_query.getProposer_id());
         message.setGenerate_time(new Date());
         message.setMessage_name(Constant.MESSAGE_REJECT_NAME);
         message.setType(Constant.MESSAGE_LEAVE_REJECT_TYPE);

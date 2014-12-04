@@ -1,4 +1,4 @@
-package com.neu.action;
+package com.neu.action.message;
 
 import com.neu.common.Constant;
 import com.neu.pojo.Leave_Info;

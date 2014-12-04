@@ -15,7 +15,13 @@
         <s:a action="logout">注销</s:a>
         <s:a action="showMessage">消息</s:a>
         <s:a href="addLeave.jsp">请假</s:a>
-
+        <s:a action="showStaff">个人信息</s:a>
+        <!--
+        <a href="
+            <s:url action="showStaff"/>
+            " target="_blank"
+                >个人信息</a>
+                -->
     </s:if>
 
 

@@ -36,7 +36,7 @@
         <action name="getSingleMessage" class="getSingleMessageAction">
             <result name="success">single_message.jsp</result>
         </action>
-        <action name="deleteMessage" class="deleteMessage">
+        <action name="deleteMessage" class="deleteMessageAction">
             <result name="success" type="chain">showMessage</result>
         </action>
 
@@ -48,6 +48,13 @@
         </action>
         <action name="rejectLeave" class="rejectLeaveAction">
             <result name="success">leave_info_result.jsp</result>
+        </action>
+
+        <action name="showStaff" class="showStaffAction">
+            <result name="success">show_staff.jsp</result>
+        </action>
+        <action name="editStaff" class="editStaffAction">
+            <result name="success">show_staff.jsp</result>
         </action>
     </package>
 </struts>
