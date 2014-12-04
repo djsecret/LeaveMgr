@@ -9,4 +9,6 @@ public interface MessageService
 {
     Message getMessage(int id);
     List<Message> getMessageListByReceiverId(int receiver_id);
+    void setMessageRead(Message message);
+    void deleteMessage(int message_id);
 }

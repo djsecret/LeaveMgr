@@ -33,15 +33,21 @@
         <action name="showMessage" class="showMessageAction">
             <result name="success">show_message.jsp</result>
         </action>
-        <action name="getSingleMessage" class="getSingleMessage">
+        <action name="getSingleMessage" class="getSingleMessageAction">
             <result name="success">single_message.jsp</result>
         </action>
         <action name="deleteMessage" class="deleteMessage">
-            <result name="success">showMessage.action</result>
+            <result name="success" type="chain">showMessage</result>
         </action>
 
-        <action name="addLeave" class="com.neu.action.AddLeaveAction">
+        <action name="addLeave" class="addLeaveAction">
             <result name="success">index.jsp</result>
+        </action>
+        <action name="allowLeave" class="allowLeaveAction">
+            <result name="success">leave_info_result.jsp</result>
+        </action>
+        <action name="rejectLeave" class="rejectLeaveAction">
+            <result name="success">leave_info_result.jsp</result>
         </action>
     </package>
 </struts>

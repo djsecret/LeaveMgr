@@ -3,9 +3,7 @@ package com.neu.service.impl;
 import com.neu.common.Constant;
 import com.neu.dao.MessageDAO;
 import com.neu.pojo.Message;
-import com.neu.pojo.Staff_Job;
 import com.neu.service.MessageService;
-import com.opensymphony.xwork2.ActionContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,5 +29,20 @@ public class MessageServiceImpl implements MessageService
     public List<Message> getMessageListByReceiverId(int receiver_id)
     {
         return messageDAO.getMessageListByReceiverId(receiver_id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void setMessageRead(Message message)
+    {
+        message.setFlag(Constant.MESSAGE_READ_FLAG);
+        messageDAO.updateMessage(message);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void deleteMessage(int message_id)
+    {
+        messageDAO.delete(message_id);
     }
 }

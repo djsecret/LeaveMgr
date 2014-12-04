@@ -2,7 +2,6 @@ package com.neu.dao.impl;
 
 import com.neu.dao.MessageDAO;
 import com.neu.pojo.Message;
-import com.neu.pojo.Staff_Job;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +32,21 @@ public class MessageDAOImpl implements MessageDAO
     public void addMessage(Message message)
     {
         sessionFactory.getCurrentSession().save(message);
+    }
+
+    @Override
+    public void updateMessage(Message message)
+    {
+        sessionFactory.getCurrentSession().update(message);
+    }
+
+    @Override
+    public void delete(int message_id)
+    {
+        Message message = getMessageById(message_id);
+        if(message != null)
+        {
+            sessionFactory.getCurrentSession().delete(message);
+        }
     }
 }

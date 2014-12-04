@@ -42,17 +42,17 @@
                 </td>
                 <td>
                     <a href="
-                <s:url action="getSingleMessage">
-                    <s:param name="message.id" value="%{#message.id}"/>
-                </s:url>"
+                        <s:url action="getSingleMessage">
+                            <s:param name="message.id" value="#message.id"/>
+                        </s:url>" target="_blank"
                             >查看</a>
 
                 </td>
                 <td>
                     <a href="
-                <s:url action="deleteMessage">
-                    <s:param name="id" value="%{#message.id}"/>
-                </s:url>"
+                        <s:url action="deleteMessage">
+                            <s:param name="id" value="#message.id"/>
+                        </s:url>"
                             >删除</a>
                 </td>
             </tr>

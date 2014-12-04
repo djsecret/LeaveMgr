@@ -10,4 +10,6 @@ public interface MessageDAO
     Message getMessageById(int id);
     List<Message> getMessageListByReceiverId(int receiver_id);
     void addMessage(Message message);
+    void updateMessage(Message message);
+    void delete(int message_id);
 }

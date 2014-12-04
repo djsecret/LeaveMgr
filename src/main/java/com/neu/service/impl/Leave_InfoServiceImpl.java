@@ -34,8 +34,8 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         leave_info.setApply_time(new Date());
         leave_info.setProposer_id(proposer.getId());
         leave_info.setProposer_name(proposer.getStaff_name());
-        leave_info.setResult(0);
-        leave_info.setValid(0);
+        leave_info.setResult(Constant.LEAVE_INFO_REJECT_RESULT);
+        leave_info.setValid(Constant.LEAVE_INFO_INVALID);
         String dept_name = proposer.getDept_name();
         String duty_name = proposer.getDuty_name();
         Staff_Job auditor;
@@ -55,11 +55,64 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         message.setSender_name(proposer.getStaff_name());
         message.setGenerate_time(new Date());
         message.setMessage_name(Constant.MESSAGE_LEAVE_NAME);
-        message.setType(0);
+        message.setType(Constant.MESSAGE_LEAVE_APPLY_TYPE);
         message.setContent(String.valueOf(leave_info.getId()));
-        message.setFlag(1);
+        message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
         message.setReceiver_id(auditor.getId());
         messageDAO.addMessage(message);
 
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public Leave_Info getLeave_Info(int id)
+    {
+        return leave_infoDAO.getLeave_InfoById(id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public Leave_Info allowLeave(Leave_Info leave_info)
+    {
+        Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
+        leave_query.setResult(leave_info.getResult());
+        leave_query.setValid(Constant.LEAVE_INFO_VALID);
+        leave_query.setHandle_time(new Date());
+        leave_infoDAO.updateLeave_Info(leave_query);
+
+        Message message = new Message();
+        message.setSender_name(leave_info.getAuditor_name());
+        message.setReceiver_id(leave_info.getProposer_id());
+        message.setGenerate_time(new Date());
+        message.setMessage_name(Constant.MESSAGE_ALLOW_NAME);
+        message.setType(Constant.MESSAGE_LEAVE_ALLOW_TYPE);
+        message.setContent(Constant.MESSAGE_ALLOW_CONTENT);
+        message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
+        messageDAO.addMessage(message);
+
+        return leave_query;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public Leave_Info rejectLeave(Leave_Info leave_info)
+    {
+        Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
+        leave_query.setResult(leave_info.getResult());
+        leave_query.setValid(Constant.LEAVE_INFO_VALID);
+        leave_query.setHandle_time(new Date());
+        leave_infoDAO.updateLeave_Info(leave_query);
+
+        Message message = new Message();
+        message.setSender_name(leave_info.getAuditor_name());
+        message.setReceiver_id(leave_info.getProposer_id());
+        message.setGenerate_time(new Date());
+        message.setMessage_name(Constant.MESSAGE_REJECT_NAME);
+        message.setType(Constant.MESSAGE_LEAVE_REJECT_TYPE);
+        message.setContent(Constant.MESSAGE_REJECT_CONTENT);
+        message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
+        messageDAO.addMessage(message);
+
+        return leave_query;
     }
 }
