@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Service("leave_InfoService")
 public class Leave_InfoServiceImpl implements Leave_InfoService
@@ -114,5 +115,12 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         messageDAO.addMessage(message);
 
         return leave_query;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public List<Leave_Info> getLeave_InfoList(int proposer_id)
+    {
+        return leave_infoDAO.getLeave_InfosByProposer_Id(proposer_id);
     }
 }

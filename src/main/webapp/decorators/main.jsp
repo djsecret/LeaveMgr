@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib prefix="decorator"
+<%@ taglib prefix="decorator"
           uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%
     String path = request.getContextPath();
@@ -48,7 +48,7 @@
                                 </div>
                                 <ul class="menu">
                                     <li class="selected"><a href="addLeave.jsp">新建请假申请</a></li>
-                                    <li><a href="#" onclick="return false">请假申请记录</a></li>
+                                    <li><a href="showLeave" >请假申请记录</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -84,9 +84,9 @@
             </div>
         </td>
 
-    <td width="1200" valign="top" style="padding: 40px;">
-    <decorator:body />
-    </td>
+        <td width="1200" valign="top" style="padding: 40px;">
+            <decorator:body />
+        </td>
     </tr>
 </table>
 </body>

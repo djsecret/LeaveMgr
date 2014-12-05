@@ -41,13 +41,19 @@
         </action>
 
         <action name="addLeave" class="addLeaveAction">
-            <result name="success" type="chain">showMessage</result>
+            <result name="success" type="chain">showLeave</result>
         </action>
         <action name="allowLeave" class="allowLeaveAction">
             <result name="success">leave_info_result.jsp</result>
         </action>
         <action name="rejectLeave" class="rejectLeaveAction">
             <result name="success">leave_info_result.jsp</result>
+        </action>
+        <action name="showLeave" class="com.neu.action.leave.ShowLeaveAction">
+            <result name="success">show_leave.jsp</result>
+        </action>
+        <action name="resumptionfromleave" class="com.neu.action.leave.ResumptionFromLeaveAction">
+            <result name="success" type="chain">showLeave</result>
         </action>
 
         <action name="showStaff" class="showStaffAction">

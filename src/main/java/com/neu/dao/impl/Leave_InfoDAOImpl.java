@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Repository
 public class Leave_InfoDAOImpl implements Leave_InfoDAO
@@ -30,5 +31,13 @@ public class Leave_InfoDAOImpl implements Leave_InfoDAO
     public void updateLeave_Info(Leave_Info leave_info)
     {
         sessionFactory.getCurrentSession().update(leave_info);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Leave_Info> getLeave_InfosByProposer_Id(int proposer_id)
+    {
+        String hql = "from Leave_Info leave where leave.proposer_id = ?";
+        return sessionFactory.getCurrentSession().createQuery(hql).setParameter(0, proposer_id).list();
     }
 }
