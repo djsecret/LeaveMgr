@@ -10,9 +10,13 @@
 <head>
     <base href="<%=basePath%>">
     <title>首页</title>
-    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-tool.css" type="text/css" />
+
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <decorator:head />
 </head>
 <body>
@@ -28,33 +32,62 @@
     </span>
 
 </s:if>
-    <ul>
-        <li class="main">
-            <a href="#" onclick="return false">请销假</a>
-            <ul>
-                <li>
-                    <a href="../addLeave.jsp">新建请假申请</a>
-                </li>
-                <li>
-                    <a href="#">请假申请记录</a>
-                </li>
-            </ul>
-        </li>
-        <li class="main">
-            <a href="#" onclick="return false">个人信息维护</a>
-            <ul>
-                <li>
-                    <a href="
-                        <s:url action="showStaff"/>
-                        " >个人信息</a>
-                </li>
-                <li>
-                    <a href="#">修改密码</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <br />
+<table>
+    <tr>
+        <td width="200px"></td>
+        <td valign="top">
+            <div id="content">
+                <ul id="expmenu-freebie">
+                    <li>
+                        <!-- Start Freebie -->
+                        <ul class="expmenu">
+                            <li>
+                                <div class="header">
+                                    <span class="label" style="background-image: url(images/messages.png);">请销假</span>
+                                    <span class="arrow up"></span>
+                                </div>
+                                <ul class="menu">
+                                    <li class="selected"><a href="addLeave.jsp">新建请假申请</a></li>
+                                    <li><a href="#" onclick="return false">请假申请记录</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="header">
+                                    <span class="label" style="background-image: url(images/user.png);">个人信息维护</span>
+                                    <span class="arrow up"></span>
+                                </div>
+                                <ul class="menu">
+                                    <li><a href="showStaff" >个人信息</a></li>
+                                    <li><a href="#" onclick="return false">修改密码</a></li>
+                                </ul>
+                            </li>
+                            <!--
+                            <li>
+                                <div class="header">
+                                    <span class="label" style="background-image: url(images/pc.png);">Screen Settings</span>
+                                    <span class="arrow down"></span>
+                                </div>
+                                <ul class="menu" style="display:none">
+                                    <li>Your settings</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="header">
+                                    <span class="label" style="background-image: url(images/search.png);">Search</span>
+                                </div>
+                            </li>
+                            -->
+                        </ul>
+                        <!-- End Freebie -->
+                    </li>
+                </ul>
+            </div>
+        </td>
+
+    <td width="1200" valign="top" style="padding: 40px;">
     <decorator:body />
+    </td>
+    </tr>
+</table>
 </body>
 </html>
