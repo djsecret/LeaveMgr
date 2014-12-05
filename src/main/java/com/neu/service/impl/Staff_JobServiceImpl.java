@@ -1,6 +1,7 @@
 package com.neu.service.impl;
 
 import com.neu.common.Constant;
+import com.neu.dao.MessageDAO;
 import com.neu.dao.Staff_JobDAO;
 import com.neu.pojo.Staff_Job;
 import com.neu.service.Staff_JobService;
@@ -17,6 +18,9 @@ public class Staff_JobServiceImpl implements Staff_JobService
     @Resource
     private Staff_JobDAO staff_jobDAO;
 
+    @Resource
+    private MessageDAO messageDAO;
+
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public boolean login(Staff_Job staff_job)
@@ -26,6 +30,12 @@ public class Staff_JobServiceImpl implements Staff_JobService
         if(staff != null && staff.getPassword().equals(staff_job.getPassword()))
         {
             ActionContext.getContext().getSession().put(Constant.STAFF_LOGIN,staff);
+
+            int unreadMessageNum = messageDAO.getUnreadMessageNumber(staff.getId());
+            System.out.println("unreadNum = " + unreadMessageNum);
+
+            ActionContext.getContext().getSession().put(Constant.UNREAD_MESSAGE_NUM,unreadMessageNum);
+
             return true;
         }
         return false;

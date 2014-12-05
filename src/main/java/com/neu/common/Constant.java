@@ -4,6 +4,7 @@ package com.neu.common;
 public class Constant
 {
     public static final String STAFF_LOGIN = "staff_login";
+    public static final String UNREAD_MESSAGE_NUM = "unread_message_number";
 
     public static final String DUTY_MINISTER = "部长";
     public static final String DUTY_HEAD = "科长";

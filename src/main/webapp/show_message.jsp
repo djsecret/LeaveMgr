@@ -44,7 +44,7 @@
                     <a href="
                         <s:url action="getSingleMessage">
                             <s:param name="message.id" value="#message.id"/>
-                        </s:url>" target="_blank"
+                        </s:url>"
                             >查看</a>
 
                 </td>

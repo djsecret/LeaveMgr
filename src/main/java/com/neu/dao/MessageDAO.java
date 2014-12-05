@@ -12,4 +12,6 @@ public interface MessageDAO
     void addMessage(Message message);
     void updateMessage(Message message);
     void delete(int message_id);
+
+    int getUnreadMessageNumber(int id);
 }

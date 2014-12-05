@@ -1,5 +1,6 @@
 package com.neu.dao.impl;
 
+import com.neu.common.Constant;
 import com.neu.dao.MessageDAO;
 import com.neu.pojo.Message;
 import org.hibernate.SessionFactory;
@@ -48,5 +49,13 @@ public class MessageDAOImpl implements MessageDAO
         {
             sessionFactory.getCurrentSession().delete(message);
         }
+    }
+
+    @SuppressWarnings("UnnecessaryUnboxing")
+    @Override
+    public int getUnreadMessageNumber(int id)
+    {
+        String hql = "select count(*) from Message m where m.flag = " + Constant.MESSAGE_UNREAD_FLAG + " and m.receiver_id = ?";
+        return ((Long)sessionFactory.getCurrentSession().createQuery(hql).setParameter(0,id).uniqueResult()).intValue();
     }
 }
