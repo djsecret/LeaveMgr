@@ -36,7 +36,7 @@
         <s:a action="showMessage"><img width="15px" height="15px" src="images/message.png" style="padding-top: 3px;">消息</s:a>&nbsp;&nbsp;&nbsp;
         <s:if test="%{#session.unread_message_number > 0}">
             <div class="float" id="float">
-                <p><s:property value="#session.unread_message_number"/>条新消息，<a href="showMessage" onclick="cls(this)">查看消息</a></p>
+                <p><s:property value="#session.unread_message_number"/>条新消息，<a href="showMessage">查看消息</a></p>
                 <a href="javascript:void(0)" onclick="cls(this)" title="关闭" id="" class="close-ico">关闭</a>
             </div>
         </s:if>
