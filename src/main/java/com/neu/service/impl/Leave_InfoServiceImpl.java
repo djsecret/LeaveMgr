@@ -123,4 +123,44 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
     {
         return leave_infoDAO.getLeave_InfosByProposer_Id(proposer_id);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void resumptionFromLeave(int id)
+    {
+        Leave_Info leave_info = leave_infoDAO.getLeave_InfoById(id);
+        leave_info.setResult(Constant.LEAVE_INFO_RESUMPTION_RESULT);
+        leave_infoDAO.updateLeave_Info(leave_info);
+
+        Message message = new Message();
+        message.setSender_name(leave_info.getProposer_name());
+        message.setReceiver_id(leave_info.getAuditor_id());
+        message.setGenerate_time(new Date());
+        message.setMessage_name(Constant.MESSAGE_RESUMPTION_NAME);
+        message.setType(Constant.MESSAGE_LEAVE_RESUMPTION_TYPE);
+        message.setContent(String.valueOf(leave_info.getId()));
+        message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
+        messageDAO.addMessage(message);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public Leave_Info archiveLeave(Leave_Info leave_info)
+    {
+        Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
+        leave_query.setResult(Constant.LEAVE_INFO_ARCHIVE_RESULT);
+        leave_infoDAO.updateLeave_Info(leave_query);
+
+        Message message = new Message();
+        message.setSender_name(leave_query.getAuditor_name());
+        message.setReceiver_id(leave_query.getProposer_id());
+        message.setGenerate_time(new Date());
+        message.setMessage_name(Constant.MESSAGE_ARCHIVE_NAME);
+        message.setType(Constant.MESSAGE_LEAVE_ARCHIVE_TYPE);
+        message.setContent(Constant.MESSAGE_ARCHIVE_CONTENT);
+        message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
+        messageDAO.addMessage(message);
+
+        return leave_query;
+    }
 }

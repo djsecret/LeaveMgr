@@ -47,11 +47,12 @@ public class GetSingleMessageAction extends ActionSupport
     {
         message = messageService.getMessage(message.getId());
         messageService.setMessageRead(message);
-        if(message.getType() == Constant.MESSAGE_LEAVE_APPLY_TYPE)
+        if(message.getType() == Constant.MESSAGE_LEAVE_APPLY_TYPE || message.getType() == Constant.MESSAGE_LEAVE_RESUMPTION_TYPE)
         {
             int leave_infoID = Integer.parseInt(message.getContent());
             leave_info = leave_infoService.getLeave_Info(leave_infoID);
         }
+
         return SUCCESS;
     }
 }

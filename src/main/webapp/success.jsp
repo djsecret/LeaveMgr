@@ -1,3 +1,8 @@
+<%--  
+  User: ubuntu
+  Date: 14-12-5
+  Time: 下午4:40  
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
@@ -7,14 +12,9 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>登录</title>
+    <title></title>
 </head>
 <body>
-<s:form action="login" namespace="/">
-    <s:textfield name="staff_id" label="员工编号"/>
-    <s:password name="password" label="密码"/>
-    <s:submit value="确定"/>
-</s:form>
-
+    <h1>操作成功！</h1>
 </body>
 </html>

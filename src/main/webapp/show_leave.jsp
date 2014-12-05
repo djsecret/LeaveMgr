@@ -34,19 +34,25 @@
             </td>
             <td>
                 <s:if test="valid == @com.neu.common.Constant@LEAVE_INFO_INVALID">
-                    待审核<br>
+                    请假待审核<br>
                 </s:if>
-                <s:if test="valid == @com.neu.common.Constant@LEAVE_INFO_VALID && result == @com.neu.common.Constant@LEAVE_INFO_REJECT_RESULT">
-                    否决<br>
-                </s:if>
-                <s:if test="valid == @com.neu.common.Constant@LEAVE_INFO_VALID && result == @com.neu.common.Constant@LEAVE_INFO_ALLOW_RESULT">
-                    通过<br>
-                </s:if>
+                <s:elseif test="result == @com.neu.common.Constant@LEAVE_INFO_REJECT_RESULT">
+                    请假被否决<br>
+                </s:elseif>
+                <s:elseif test="result == @com.neu.common.Constant@LEAVE_INFO_ALLOW_RESULT">
+                    请假通过<br>
+                </s:elseif>
+                <s:elseif test="result == @com.neu.common.Constant@LEAVE_INFO_RESUMPTION_RESULT">
+                    销假待审核<br>
+                </s:elseif>
+                <s:elseif test="result == @com.neu.common.Constant@LEAVE_INFO_ARCHIVE_RESULT">
+                    销假归档<br>
+                </s:elseif>
             </td>
             <td>
                 <s:if test="valid == @com.neu.common.Constant@LEAVE_INFO_VALID && result == @com.neu.common.Constant@LEAVE_INFO_ALLOW_RESULT">
                     <a href="
-                        <s:url action="">
+                        <s:url action="resumptionfromleave">
                             <s:param name="id" value="#leave.id"/>
                         </s:url>" >销假
                     </a>

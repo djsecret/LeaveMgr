@@ -1,5 +1,6 @@
 package com.neu.action.leave;
 
+import com.neu.pojo.Leave_Info;
 import com.neu.service.Leave_InfoService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
@@ -7,28 +8,27 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
 
 @Controller
-public class ResumptionFromLeaveAction extends ActionSupport
+public class ArchiveLeaveAction extends ActionSupport
 {
-    private int id;
-
     @Resource
     private Leave_InfoService leave_infoService;
 
-    public int getId()
+    private Leave_Info leave_info;
+
+    public Leave_Info getLeave_info()
     {
-        return id;
+        return leave_info;
     }
 
-    public void setId(int id)
+    public void setLeave_info(Leave_Info leave_info)
     {
-        this.id = id;
+        this.leave_info = leave_info;
     }
 
     @Override
     public String execute() throws Exception
     {
-        System.out.println(id);
-        leave_infoService.resumptionFromLeave(id);
+        leave_info = leave_infoService.archiveLeave(leave_info);
         return SUCCESS;
     }
 }

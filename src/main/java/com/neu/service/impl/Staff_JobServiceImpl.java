@@ -30,4 +30,22 @@ public class Staff_JobServiceImpl implements Staff_JobService
         }
         return false;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public boolean updatePassword(String staff_id, String password, String newPassword)
+    {
+        Staff_Job staff = staff_jobDAO.getStaff_JobByStaff_id(staff_id);
+
+        if(staff != null && staff.getPassword().equals(password))
+        {
+            staff.setPassword(newPassword);
+            staff_jobDAO.update(staff);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -5,8 +5,6 @@ import com.neu.dao.Staff_JobDAO;
 import com.neu.pojo.Staff_Job;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -45,6 +43,12 @@ public class Staff_JobDAOImpl implements Staff_JobDAO
     {
         String hql = "from Staff_Job staff where staff.dept_name = ? and staff.duty_name like '%长'";
         return (Staff_Job)sessionFactory.getCurrentSession().createQuery(hql).setString(0, dept_name).uniqueResult();
+    }
+
+    @Override
+    public void update(Staff_Job staff)
+    {
+        sessionFactory.getCurrentSession().update(staff);
     }
 
 

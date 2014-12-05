@@ -49,11 +49,14 @@
         <action name="rejectLeave" class="rejectLeaveAction">
             <result name="success">leave_info_result.jsp</result>
         </action>
-        <action name="showLeave" class="com.neu.action.leave.ShowLeaveAction">
+        <action name="showLeave" class="showLeaveAction">
             <result name="success">show_leave.jsp</result>
         </action>
-        <action name="resumptionfromleave" class="com.neu.action.leave.ResumptionFromLeaveAction">
+        <action name="resumptionfromleave" class="resumptionFromLeaveAction">
             <result name="success" type="chain">showLeave</result>
+        </action>
+        <action name="archiveLeave" class="archiveLeaveAction">
+            <result name="success">leave_info_result.jsp</result>
         </action>
 
         <action name="showStaff" class="showStaffAction">
@@ -61,6 +64,10 @@
         </action>
         <action name="editStaff" class="editStaffAction">
             <result name="success">show_staff.jsp</result>
+        </action>
+        <action name="updatePassword" class="updatePasswordAction">
+            <result name="success">success.jsp</result>
+            <result name="input">update_password.jsp</result>
         </action>
     </package>
 </struts>

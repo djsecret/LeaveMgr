@@ -58,7 +58,7 @@
                                 </div>
                                 <ul class="menu">
                                     <li><a href="showStaff" >个人信息</a></li>
-                                    <li><a href="#" onclick="return false">修改密码</a></li>
+                                    <li><a href="update_password.jsp">修改密码</a></li>
                                 </ul>
                             </li>
                             <!--
