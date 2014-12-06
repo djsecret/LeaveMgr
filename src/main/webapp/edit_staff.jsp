@@ -18,9 +18,7 @@
     身份证号：<s:textfield name="staff_info.identity_card" value="%{#parameters.identity_card}"/><br>
     &nbsp;&nbsp;性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;：<s:select list="{'男','女'}" name="staff_info.gender" value="%{#parameters.gender}"/><br>
     <script type="text/javascript" src="HelloWorld/calendar_jh.js"></script>
-    入职时间：<s:textfield name="staff_info.entry_date" onclick="popCalendar(this)" value="%{getText('global.date',#parameters.gender ) }">
-
-    </s:textfield><br>
+    入职时间：<s:textfield name="staff_info.entry_date" onclick="popCalendar(this)" value="%{#parameters.entry_date}"/><br>
 
     最终学历：<s:select list="{'专科','本科','研究生','博士','其他'}" name="staff_info.education" value="%{#parameters.education}"/><br>
     家庭住址：<s:textfield name="staff_info.address" value="%{#parameters.address}"/><br>

@@ -7,16 +7,10 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>Result</title>
+    <title>消息列表</title>
 </head>
 <body>
-<!--
-    <%=request.getParameter("staff_id")%><br>
-    <%=request.getParameter("password")%><br>
 
-    username: ${ requestScope.staff_id }<br>
-    password: ${ requestScope.password }<br>
--->
     <table width="80%" align="center" border="1">
         <tr>
             <th>消息编号</th>
@@ -38,7 +32,7 @@
                     <s:property value="message_name"/>
                 </td>
                 <td>
-                    <s:property value="generate_time"/>
+                    <s:date name="generate_time" format="yyyy-MM-dd HH:mm:ss"/>
                 </td>
                 <td>
                     <a href="

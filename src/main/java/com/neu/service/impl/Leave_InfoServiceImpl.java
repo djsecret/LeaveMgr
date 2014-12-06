@@ -54,7 +54,8 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
 
         Message message = new Message();
         message.setSender_name(proposer.getStaff_name());
-        message.setGenerate_time(new Date());
+        message.setGenerate_time(new Date(System.currentTimeMillis()));
+        System.out.println(message.getGenerate_time());
         message.setMessage_name(Constant.MESSAGE_LEAVE_NAME);
         message.setType(Constant.MESSAGE_LEAVE_APPLY_TYPE);
         message.setContent(String.valueOf(leave_info.getId()));

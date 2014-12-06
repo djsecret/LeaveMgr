@@ -15,7 +15,7 @@
 &nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;：<s:property value="staff_info.staff_name"/><br>
 身份证号：<s:property value="staff_info.identity_card"/><br>
 &nbsp;&nbsp;性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;：<s:property value="staff_info.gender"/><br>
-入职时间：<s:property value="staff_info.entry_date"/><br>
+入职时间：<s:date name="staff_info.entry_date" format="yyyy-MM-dd"/><br>
 最终学历：<s:property value="staff_info.education"/><br>
 家庭住址：<s:property value="staff_info.address"/><br>
 联系方式：<s:property value="staff_info.tel"/><br>

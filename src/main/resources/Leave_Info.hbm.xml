@@ -11,10 +11,10 @@
         </id>
         <property name="begin_time" column="begin_time" type="date"/>
         <property name="days" column="days" type="int"/>
-        <property name="apply_time" column="apply_time" type="date"/>
+        <property name="apply_time" column="apply_time" type="timestamp"/>
         <property name="reason" column="reason" type="string"/>
         <property name="result" column="result" type="int"/>
-        <property name="handle_time" column="handle_time" type="date"/>
+        <property name="handle_time" column="handle_time" type="timestamp"/>
         <property name="valid" column="valid" type="int"/>
         <property name="proposer_id" column="proposer_id" type="int"/>
         <property name="proposer_name" column="proposer_name" type="string"/>
