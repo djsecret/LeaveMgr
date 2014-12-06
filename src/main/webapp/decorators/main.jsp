@@ -99,7 +99,7 @@
             </div>
         </td>
 
-        <td width="1300" valign="top" style="padding: 40px;">
+        <td  valign="top" style="padding: 40px;">
             <decorator:body/>
         </td>
     </tr>
