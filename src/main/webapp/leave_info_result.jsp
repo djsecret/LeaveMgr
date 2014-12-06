@@ -35,7 +35,8 @@
         </s:elseif>
         <br>
         审核者：<s:property value="leave_info.auditor_name"/>&nbsp;&nbsp;&nbsp;&nbsp;处理时间：<s:property value="leave_info.handle_time"/><br>
-
+        <br>
+        <a style="margin-left: 300px;" href="showMessage">返回</a>
 
 </body>
 </html>

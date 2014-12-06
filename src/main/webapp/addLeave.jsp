@@ -8,6 +8,7 @@
 <head>
     <base href="<%=basePath%>">
     <title>请假</title>
+    <script type="text/javascript" src="HelloWorld/calendar_jh.js"></script>
     <style>
         .event {
             width: 500px;
@@ -80,6 +81,7 @@
             font-weight: 700;
         }
     </style>
+
 </head>
 <body>
 
@@ -88,7 +90,8 @@
 
         <div class="info">
             <s:form action="addLeave" namespace="/" theme="simple">
-                起始日期: <s:textfield name="leave_info.begin_time"/><br>
+
+                起始日期: <s:textfield name="leave_info.begin_time" onclick="popCalendar(this)"/><br>
                 请假天数: <s:textfield name="leave_info.days" size="6"/><br>
                 请假事由: <s:textarea name="leave_info.reason" cols="25" rows="5"/> <br>
                 <br>

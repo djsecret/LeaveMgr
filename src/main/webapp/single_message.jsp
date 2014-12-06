@@ -57,6 +57,8 @@
         </s:elseif>
     </s:if>
     <br>
+    <a style="margin-left: 300px;" href="showMessage">返回</a>
+    <br>
 
 </body>
 </html>

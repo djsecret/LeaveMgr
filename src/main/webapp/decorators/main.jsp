@@ -9,7 +9,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>首页</title>
+    <title><decorator:title/></title>
 
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
     <link rel="stylesheet" href="css/jquery-tool.css" type="text/css"/>
