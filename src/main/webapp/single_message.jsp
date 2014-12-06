@@ -12,15 +12,15 @@
 </head>
 <body>
     消息编号：<s:property value="message.id"/>&nbsp;&nbsp;&nbsp;&nbsp;发送人：<s:property value="message.sender_name"/><br>
-    标题：<s:property value="message.message_name"/>&nbsp;&nbsp;&nbsp;&nbsp;发送时间：<s:property value="message.generate_time"/><br>
+    标题：<s:property value="message.message_name"/>&nbsp;&nbsp;&nbsp;&nbsp;发送时间：<s:date name="message.generate_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>
     <br>
     <br>
     <s:if test="message.type == @com.neu.common.Constant@MESSAGE_LEAVE_APPLY_TYPE || message.type == @com.neu.common.Constant@MESSAGE_LEAVE_RESUMPTION_TYPE">
         请假事务编号：<s:property value="leave_info.id"/><br>
         请假人：<s:property value="leave_info.proposer_name"/><br>
-        起始时间：<s:property value="leave_info.begin_time"/>&nbsp;&nbsp;&nbsp;&nbsp;请假天数：<s:property value="leave_info.days"/><br>
+        起始时间：<s:date name="leave_info.begin_time" format="yyyy年MM月dd日"/>&nbsp;&nbsp;&nbsp;&nbsp;请假天数：<s:property value="leave_info.days"/><br>
         事由：<s:property value="leave_info.reason"/><br>
-        申请时间：<s:property value="leave_info.apply_time"/><br>
+        申请时间：<s:date name="leave_info.apply_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>
         状态：
         <s:if test="leave_info.valid == @com.neu.common.Constant@LEAVE_INFO_INVALID">
             待审核<br>

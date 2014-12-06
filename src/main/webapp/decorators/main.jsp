@@ -54,16 +54,18 @@
                     <li>
                         <!-- Start Freebie -->
                         <ul class="expmenu">
-                            <li>
-                                <div class="header">
-                                    <span class="label" style="background-image: url(images/messages.png);">请销假</span>
-                                    <span class="arrow up"></span>
-                                </div>
-                                <ul class="menu">
-                                    <li class="selected"><a href="addLeave.jsp">新建请假申请</a></li>
-                                    <li><a href="showLeave">请假申请记录</a></li>
-                                </ul>
-                            </li>
+                            <s:if test="%{#session.staff_login.duty_name != '总经理'}">
+                                <li>
+                                    <div class="header">
+                                        <span class="label" style="background-image: url(images/messages.png);">请销假</span>
+                                        <span class="arrow up"></span>
+                                    </div>
+                                    <ul class="menu">
+                                        <li class="selected"><a href="addLeave.jsp">新建请假申请</a></li>
+                                        <li><a href="showLeave">请假申请记录</a></li>
+                                    </ul>
+                                </li>
+                            </s:if>
                             <li>
                                 <div class="header">
                                     <span class="label" style="background-image: url(images/user.png);">个人信息维护</span>

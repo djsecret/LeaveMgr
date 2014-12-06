@@ -14,9 +14,9 @@
 
         请假事务编号：<s:property value="leave_info.id"/><br>
         请假人：<s:property value="leave_info.proposer_name"/><br>
-        起始时间：<s:property value="leave_info.begin_time"/>&nbsp;&nbsp;&nbsp;&nbsp;请假天数：<s:property value="leave_info.days"/><br>
+        起始时间：<s:date name="leave_info.begin_time" format="yyyy年MM月dd日"/>&nbsp;&nbsp;&nbsp;&nbsp;请假天数：<s:property value="leave_info.days"/><br>
         事由：<s:property value="leave_info.reason"/><br>
-        申请时间：<s:property value="leave_info.apply_time"/><br>
+        申请时间：<s:date name="leave_info.apply_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>
         状态：
         <s:if test="leave_info.valid == @com.neu.common.Constant@LEAVE_INFO_INVALID">
             请假待审核<br>
@@ -34,7 +34,7 @@
             销假归档<br>
         </s:elseif>
         <br>
-        审核者：<s:property value="leave_info.auditor_name"/>&nbsp;&nbsp;&nbsp;&nbsp;处理时间：<s:property value="leave_info.handle_time"/><br>
+        审核者：<s:property value="leave_info.auditor_name"/>&nbsp;&nbsp;&nbsp;&nbsp;处理时间：<s:date name="leave_info.handle_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>
         <br>
         <a style="margin-left: 300px;" href="showMessage">返回</a>
 

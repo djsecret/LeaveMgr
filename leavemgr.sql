@@ -40,6 +40,8 @@ CREATE TABLE staff_info (
 	email VARCHAR(25))DEFAULT CHARSET=utf8;
 
 INSERT INTO staff_info(staff_id,staff_name,identity_card,gender,entry_date,education,address,tel,email)
+	VALUES('200010301000','杨森','100100200002020010','男','2000-9-10','博士','沈阳和平区文化路11号0号巷','13011111110','jfweiofa0@163.com');
+INSERT INTO staff_info(staff_id,staff_name,identity_card,gender,entry_date,education,address,tel,email)
 	VALUES('200010301001','张三','100100200002020011','男','2000-9-1','本科','沈阳和平区文化路11号1号巷','13011111111','jfweiofa1@163.com');
 INSERT INTO staff_info(staff_id,staff_name,identity_card,gender,entry_date,education,address,tel,email)
 	VALUES('200010301002','张辉','200100200002020011','男','2000-9-2','本科','沈阳和平区文化路11号2号巷','13011111112','jfweiofa2@163.com');
@@ -56,10 +58,13 @@ CREATE TABLE staff_job (
 	dept_name VARCHAR(30),
 	duty_name VARCHAR(30))DEFAULT CHARSET=utf8;
 
+INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301000','杨森','123','经理','总经理');
 INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301001','张三','123','开发融资部','部长');
-INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301002','张辉','456','开发融资部','科员');
-INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301003','陈诚','789','财务部','部长');
-INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301004','刘玫','124','养护科','科长');
+INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301002','张辉','123','开发融资部','部员');
+INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301003','陈诚','123','财务部','部长');
+INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301004','陈达','123','财务部','部员');
+INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301005','刘玫','123','养护科','科长');
+INSERT INTO staff_job(staff_id,staff_name,password,dept_name,duty_name) VALUES('200010301006','刘美','123','养护科','科员');
 
 CREATE TABLE message (
 	id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,	
@@ -72,23 +77,16 @@ CREATE TABLE message (
 	flag INT(1) DEFAULT 1)DEFAULT CHARSET=utf8;
 
 
-INSERT INTO message(sender_name,receiver_id,generate_time,message_name,type,content,flag) 
-	VALUES('张辉','1','2008-01-29 04:04:36','leave',1,'ask for a leave',1);
-INSERT INTO message(sender_name,receiver_id,generate_time,message_name,type,content,flag) 
-	VALUES('张辉','1','2008-02-29 04:04:36','leave',2,'ask for a leave again',1);
-INSERT INTO message(sender_name,receiver_id,generate_time,message_name,type,content,flag) 
-	VALUES('张辉','1','2008-03-29 04:04:36','leave',2,'ask for a leave again',1);
-
 CREATE TABLE leave_info (
 	id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,		
 	begin_time DATE,
 	days INT(10),
-	apply_time DATE,
+	apply_time DATETIME,
 	reason TEXT,
 	proposer_id INT(20) NOT NULL,
 	proposer_name VARCHAR(30) NOT NULL,
 	auditor_id INT(20) NOT NULL,
 	auditor_name VARCHAR(30) NOT NULL,
 	result INT(1) DEFAULT 0,
-	handle_time DATE,
+	handle_time DATETIME,
 	valid INT(1) DEFAULT 0)DEFAULT CHARSET=utf8;

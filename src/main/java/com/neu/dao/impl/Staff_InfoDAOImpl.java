@@ -24,4 +24,11 @@ public class Staff_InfoDAOImpl implements Staff_InfoDAO
     {
         sessionFactory.getCurrentSession().update(staff_info);
     }
+
+    @Override
+    public Staff_Info getStaff_InfoByStaff_Id(String staff_id)
+    {
+        String hql = "from Staff_Info staff where staff.staff_id = ?";
+        return (Staff_Info)sessionFactory.getCurrentSession().createQuery(hql).setParameter(0,staff_id).uniqueResult();
+    }
 }

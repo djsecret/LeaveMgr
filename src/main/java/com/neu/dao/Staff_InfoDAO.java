@@ -8,4 +8,6 @@ public interface Staff_InfoDAO
     Staff_Info getStaff_InfoById(int id);
 
     void update(Staff_Info staff_info);
+
+    Staff_Info getStaff_InfoByStaff_Id(String staff_id);
 }

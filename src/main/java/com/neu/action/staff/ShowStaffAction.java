@@ -44,7 +44,7 @@ public class ShowStaffAction extends ActionSupport
     public String execute() throws Exception
     {
         staff_job = (Staff_Job)ActionContext.getContext().getSession().get(Constant.STAFF_LOGIN);
-        staff_info = staff_infoService.getStaff_InfoById(staff_job.getId());
+        staff_info = staff_infoService.getStaff_InfoById(staff_job.getStaff_id());
         return SUCCESS;
     }
 }

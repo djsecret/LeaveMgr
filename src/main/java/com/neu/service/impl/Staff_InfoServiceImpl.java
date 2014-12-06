@@ -28,4 +28,11 @@ public class Staff_InfoServiceImpl implements Staff_InfoService
     {
         staff_infoDAO.update(staff_info);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public Staff_Info getStaff_InfoById(String staff_id)
+    {
+        return staff_infoDAO.getStaff_InfoByStaff_Id(staff_id);
+    }
 }

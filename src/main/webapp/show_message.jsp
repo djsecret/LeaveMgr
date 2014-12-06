@@ -11,8 +11,8 @@
 </head>
 <body>
 
-    <table width="80%" align="center" border="1">
-        <tr>
+    <table style="border-collapse: collapse; border: none;" width="80%" align="center">
+        <tr style="border-bottom: solid #000 1px;background-image: url("")">
             <th>消息编号</th>
             <th>发信人</th>
             <th>消息名称</th>
@@ -21,7 +21,7 @@
             <th>删除</th>
         </tr>
         <s:iterator value="messages" id="message">
-            <tr>
+            <tr style="border-bottom: solid #000 1px">
                 <td>
                     <s:property value="id"/>
                 </td>

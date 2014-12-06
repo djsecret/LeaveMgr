@@ -32,7 +32,7 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
     public void addLeave_Info(Leave_Info leave_info)
     {
         Staff_Job proposer = (Staff_Job) ActionContext.getContext().getSession().get(Constant.STAFF_LOGIN);
-        leave_info.setApply_time(new Date());
+        leave_info.setApply_time(new Date(System.currentTimeMillis()));
         leave_info.setProposer_id(proposer.getId());
         leave_info.setProposer_name(proposer.getStaff_name());
         leave_info.setResult(Constant.LEAVE_INFO_REJECT_RESULT);
@@ -79,13 +79,13 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
         leave_query.setResult(leave_info.getResult());
         leave_query.setValid(Constant.LEAVE_INFO_VALID);
-        leave_query.setHandle_time(new Date());
+        leave_query.setHandle_time(new Date(System.currentTimeMillis()));
         leave_infoDAO.updateLeave_Info(leave_query);
 
         Message message = new Message();
         message.setSender_name(leave_query.getAuditor_name());
         message.setReceiver_id(leave_query.getProposer_id());
-        message.setGenerate_time(new Date());
+        message.setGenerate_time(new Date(System.currentTimeMillis()));
         message.setMessage_name(Constant.MESSAGE_ALLOW_NAME);
         message.setType(Constant.MESSAGE_LEAVE_ALLOW_TYPE);
         message.setContent(Constant.MESSAGE_ALLOW_CONTENT);
@@ -102,13 +102,13 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
         leave_query.setResult(leave_info.getResult());
         leave_query.setValid(Constant.LEAVE_INFO_VALID);
-        leave_query.setHandle_time(new Date());
+        leave_query.setHandle_time(new Date(System.currentTimeMillis()));
         leave_infoDAO.updateLeave_Info(leave_query);
 
         Message message = new Message();
         message.setSender_name(leave_query.getAuditor_name());
         message.setReceiver_id(leave_query.getProposer_id());
-        message.setGenerate_time(new Date());
+        message.setGenerate_time(new Date(System.currentTimeMillis()));
         message.setMessage_name(Constant.MESSAGE_REJECT_NAME);
         message.setType(Constant.MESSAGE_LEAVE_REJECT_TYPE);
         message.setContent(Constant.MESSAGE_REJECT_CONTENT);
@@ -136,7 +136,7 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         Message message = new Message();
         message.setSender_name(leave_info.getProposer_name());
         message.setReceiver_id(leave_info.getAuditor_id());
-        message.setGenerate_time(new Date());
+        message.setGenerate_time(new Date(System.currentTimeMillis()));
         message.setMessage_name(Constant.MESSAGE_RESUMPTION_NAME);
         message.setType(Constant.MESSAGE_LEAVE_RESUMPTION_TYPE);
         message.setContent(String.valueOf(leave_info.getId()));
@@ -155,7 +155,7 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         Message message = new Message();
         message.setSender_name(leave_query.getAuditor_name());
         message.setReceiver_id(leave_query.getProposer_id());
-        message.setGenerate_time(new Date());
+        message.setGenerate_time(new Date(System.currentTimeMillis()));
         message.setMessage_name(Constant.MESSAGE_ARCHIVE_NAME);
         message.setType(Constant.MESSAGE_LEAVE_ARCHIVE_TYPE);
         message.setContent(Constant.MESSAGE_ARCHIVE_CONTENT);

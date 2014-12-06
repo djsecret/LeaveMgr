@@ -21,13 +21,13 @@
                 <s:property value="id"/>
             </td>
             <td>
-                <s:property value="begin_time"/>
+                <s:date name="begin_time" format="yyyy年MM月dd日"/>
             </td>
             <td>
                 <s:property value="days"/>
             </td>
             <td>
-                <s:property value="apply_time"/>
+                <s:date name="apply_time" format="yyyy年MM月dd日 HH:mm:ss"/>
             </td>
             <td>
                 <s:property value="auditor_name"/>
