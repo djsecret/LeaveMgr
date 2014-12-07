@@ -5,22 +5,19 @@
     <title>请假申请记录</title>
 </head>
 <body>
-<table width="80%" align="center" border="1">
-    <tr>
-        <th>请假编号</th>
-        <th>起始时间</th>
-        <th>请假天数</th>
-        <th>申请时间</th>
-        <th>审核者</th>
-        <th>状态</th>
-        <th>销假</th>
+<table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
+    <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/tool_bg104473.gif)">
+        <td align="center">起始时间</td>
+        <td>请假天数</td>
+        <td>申请时间</td>
+        <td>审核者</td>
+        <td>状态</td>
+        <td>销假</td>
     </tr>
     <s:iterator value="leave_infos" id="leave">
         <tr>
-            <td>
-                <s:property value="id"/>
-            </td>
-            <td>
+
+            <td align="center">
                 <s:date name="begin_time" format="yyyy年MM月dd日"/>
             </td>
             <td>

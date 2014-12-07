@@ -92,12 +92,15 @@
             <s:form action="addLeave" namespace="/" theme="simple">
 
                 起始日期: <s:textfield name="leave_info.begin_time" onclick="popCalendar(this)"/><br>
-                请假天数: <s:textfield name="leave_info.days" size="6"/><br>
-                请假事由: <s:textarea name="leave_info.reason" cols="25" rows="5"/> <br>
                 <br>
-                <span style="float:right;">
-                <input type="submit" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重填">
-                    </span>
+                请假天数: <s:textfield name="leave_info.days" size="6"/><br>
+                <br>
+                <label style="vertical-align:top">请假事由:</label>
+                <s:textarea name="leave_info.reason" cols="25" rows="5"/> <br>
+
+                <span style="float:right;margin-top: 10px;">
+                    <input type="submit" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重填">
+                </span>
             </s:form>
         </div>
 

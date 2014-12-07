@@ -45,4 +45,11 @@ public class MessageServiceImpl implements MessageService
     {
         messageDAO.delete(message_id);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void batchDelete(Integer[] ids)
+    {
+        messageDAO.batchDelete(ids);
+    }
 }

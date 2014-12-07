@@ -39,6 +39,9 @@
         <action name="deleteMessage" class="deleteMessageAction">
             <result name="success" type="chain">showMessage</result>
         </action>
+        <action name="deleteAllMessage" class="deleteAllAction">
+            <result name="success" type="chain">showMessage</result>
+        </action>
 
         <action name="addLeave" class="addLeaveAction">
             <result name="success" type="chain">showLeave</result>

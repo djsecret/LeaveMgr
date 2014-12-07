@@ -14,4 +14,6 @@ public interface MessageDAO
     void delete(int message_id);
 
     int getUnreadMessageNumber(int id);
+
+    void batchDelete(Integer[] ids);
 }

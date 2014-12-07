@@ -11,4 +11,6 @@ public interface MessageService
     List<Message> getMessageListByReceiverId(int receiver_id);
     void setMessageRead(Message message);
     void deleteMessage(int message_id);
+
+    void batchDelete(Integer[] ids);
 }

@@ -8,24 +8,52 @@
 <head>
     <base href="<%=basePath%>">
     <title>消息列表</title>
+    <script type="application/javascript">
+        function doDeleteAll()
+        {
+            var chks = document.getElementsByName("checkbox2");
+            var ids = [];
+            var count = 0;
+            for (var i = 0; i < chks.length; i++)
+            {
+                if (chks[i].checked)
+                {
+                    ids.push(chks[i].value);
+                    count += 1;
+                }
+            }
+            if (count == 0)
+            {
+                alert("请选择记录");
+            }
+            else if (confirm("您选中了【" + count + "】记录，确定删除？"))
+            {
+                var url = "deleteAllMessage.action?ids=" + ids;
+                window.location = url;
+            }
+        }
 
+    </script>
 </head>
 <body>
 <div class="topline"></div>
 
     <table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
         <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/tool_bg104473.gif)">
-            <td>消息编号</td>
-            <td>发信人</td>
-            <td>消息名称</td>
-            <td>发送时间</td>
-            <td> </td>
+            <td width="8%" align="center"><a onclick="doDeleteAll();">删除</a></td>
+            <td width="10%">发信人</td>
+            <td width="35%">消息名称</td>
+            <td width="25%">发送时间</td>
+            <td width="5%"> </td>
         </tr>
+
         <s:iterator value="messages" id="message">
             <s:if test="flag == @com.neu.common.Constant@MESSAGE_UNREAD_FLAG">
                 <tr style="color:#040205; border-bottom: solid rgba(178, 174, 186, 0.97) 1px" >
                     <td>
-                        <s:property value="id"/>
+                        <div align="center">
+                            <input type="checkbox" name="checkbox2" value="id" />
+                        </div>
                     </td>
                     <td>
                         <s:property value="sender_name"/>
@@ -51,7 +79,7 @@
                         <s:url action="deleteMessage">
                             <s:param name="id" value="#message.id"/>
                         </s:url>"
-                                ><img src="images/del1.png" title="删除消息" width="20px" height="20px"></a>
+                                ><img src="images/3286.png" title="删除消息" width="18px" height="20px"></a>
                     </td>
                 </tr>
             </s:if>
@@ -59,7 +87,9 @@
 
                 <tr style="color:#85828b; border-bottom: solid rgba(178, 174, 186, 0.97) 1px;">
                     <td>
-                        <s:property value="id"/>
+                        <div align="center">
+                            <input type="checkbox" name="checkbox2" value="<s:property value="id"/> " />
+                        </div>
                     </td>
                     <td>
                         <s:property value="sender_name"/>
@@ -85,7 +115,7 @@
                         <s:url action="deleteMessage">
                             <s:param name="id" value="#message.id"/>
                         </s:url>"
-                                ><img title="删除消息" src="images/del1.png" width="20px" height="20px"></a>
+                                ><img title="删除消息" src="images/3286.png" width="18px" height="20px"></a>
                     </td>
                 </tr>
 
