@@ -15,7 +15,7 @@
         <td>销假</td>
     </tr>
     <s:iterator value="leave_infos" id="leave">
-        <tr>
+        <tr style="border-bottom: solid rgba(178, 174, 186, 0.97) 1px;">
 
             <td align="center">
                 <s:date name="begin_time" format="yyyy年MM月dd日"/>
@@ -24,7 +24,7 @@
                 <s:property value="days"/>
             </td>
             <td>
-                <s:date name="apply_time" format="yyyy年MM月dd日 HH:mm:ss"/>
+                <s:date name="apply_time" format="yyyy年MM月dd日"/>
             </td>
             <td>
                 <s:property value="auditor_name"/>
@@ -54,7 +54,6 @@
                         </s:url>" >销假
                     </a>
                 </s:if>
-                <s:else>-</s:else>
             </td>
         </tr>
     </s:iterator>

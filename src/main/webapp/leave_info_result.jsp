@@ -18,7 +18,7 @@
         事由：<s:property value="leave_info.reason"/><br>
         申请时间：<s:date name="leave_info.apply_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>
         状态：
-        <s:if test="leave_info.valid == @com.neu.common.Constant@LEAVE_INFO_INVALID">
+        <s:if test="leave_info.result == @com.neu.common.Constant@LEAVE_INFO_ALLPY_RESULT">
             请假待审核<br>
         </s:if>
         <s:elseif test="leave_info.result == @com.neu.common.Constant@LEAVE_INFO_REJECT_RESULT">
@@ -32,6 +32,9 @@
         </s:elseif>
         <s:elseif test="leave_info.result == @com.neu.common.Constant@LEAVE_INFO_ARCHIVE_RESULT">
             销假归档<br>
+        </s:elseif>
+        <s:elseif test="leave_info.result == @com.neu.common.Constant@LEAVE_INFO_DELIVER_RESULT">
+            天数超过<s:property value="@com.neu.common.Constant@DAYS_THRESHOLD"/>，待总经理审核 <br>
         </s:elseif>
         <br>
         审核者：<s:property value="leave_info.auditor_name"/>&nbsp;&nbsp;&nbsp;&nbsp;处理时间：<s:date name="leave_info.handle_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>

@@ -28,9 +28,9 @@ public class Staff_JobDAOImpl implements Staff_JobDAO
     @Override
     public Staff_Job getGeneral_Manager()
     {
-        String hql = "from Staff_Job staff where staff.duty_name = ?";
+        String hql = "from Staff_Job staff where staff.rank = ?";
 
-        return (Staff_Job)sessionFactory.getCurrentSession().createQuery(hql).setString(0, Constant.DUTY_GENERAL_MANAGER).uniqueResult();
+        return (Staff_Job)sessionFactory.getCurrentSession().createQuery(hql).setParameter(0, Constant.DUTY_GENERAL_MANAGER).uniqueResult();
     }
 
     /**
@@ -41,8 +41,9 @@ public class Staff_JobDAOImpl implements Staff_JobDAO
     @Override
     public Staff_Job getManagerByDept_name(String dept_name)
     {
-        String hql = "from Staff_Job staff where staff.dept_name = ? and staff.duty_name like '%长'";
-        return (Staff_Job)sessionFactory.getCurrentSession().createQuery(hql).setString(0, dept_name).uniqueResult();
+//        String hql = "from Staff_Job staff where staff.dept_name = ? and staff.duty_name like '%长'";
+        String hql = "from Staff_Job staff where staff.dept_name = ? and staff.rank = ?";
+        return (Staff_Job)sessionFactory.getCurrentSession().createQuery(hql).setParameter(0, dept_name).setParameter(1,Constant.DUTY_MINISTER).uniqueResult();
     }
 
     @Override

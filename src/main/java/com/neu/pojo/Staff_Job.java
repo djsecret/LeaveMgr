@@ -11,7 +11,7 @@ public class Staff_Job implements Serializable
     private String staff_name;
     private String password;
     private String dept_name;
-    private String duty_name;
+    private int rank;
 
     public int getId()
     {
@@ -63,14 +63,14 @@ public class Staff_Job implements Serializable
         this.dept_name = dept_name;
     }
 
-    public String getDuty_name()
+    public int getRank()
     {
-        return duty_name;
+        return rank;
     }
 
-    public void setDuty_name(String duty_name)
+    public void setRank(int rank)
     {
-        this.duty_name = duty_name;
+        this.rank = rank;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class Staff_Job implements Serializable
                 ", staff_name='" + staff_name + '\'' +
                 ", password='" + password + '\'' +
                 ", dept_name='" + dept_name + '\'' +
-                ", duty_name='" + duty_name + '\'' +
+                ", rank='" + rank + '\'' +
                 '}';
     }
 }

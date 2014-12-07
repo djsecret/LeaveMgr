@@ -54,7 +54,7 @@ public class GetSingleMessageAction extends ActionSupport
             ActionContext.getContext().getSession().put(Constant.UNREAD_MESSAGE_NUM,unreadNum-1);
         }
 
-        if(message.getType() == Constant.MESSAGE_LEAVE_APPLY_TYPE || message.getType() == Constant.MESSAGE_LEAVE_RESUMPTION_TYPE)
+        if(message.getType() == Constant.MESSAGE_LEAVE_APPLY_TYPE || message.getType() == Constant.MESSAGE_LEAVE_RESUMPTION_TYPE || message.getType() == Constant.MESSAGE_LEAVE_DELIVER_TYPE)
         {
             int leave_infoID = Integer.parseInt(message.getContent());
             leave_info = leave_infoService.getLeave_Info(leave_infoID);

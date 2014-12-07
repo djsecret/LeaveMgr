@@ -13,7 +13,7 @@
         <property name="staff_name" column="staff_name" type="string"/>
         <property name="password" column="password" type="string"/>
         <property name="dept_name" column="dept_name" type="string"/>
-        <property name="duty_name" column="duty_name" type="string"/>
+        <property name="rank" column="rank" type="int"/>
 
     </class>
 

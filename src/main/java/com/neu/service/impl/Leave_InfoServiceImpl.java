@@ -35,18 +35,20 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         leave_info.setApply_time(new Date(System.currentTimeMillis()));
         leave_info.setProposer_id(proposer.getId());
         leave_info.setProposer_name(proposer.getStaff_name());
-        leave_info.setResult(Constant.LEAVE_INFO_REJECT_RESULT);
+        leave_info.setResult(Constant.LEAVE_INFO_ALLPY_RESULT);
         leave_info.setValid(Constant.LEAVE_INFO_INVALID);
         String dept_name = proposer.getDept_name();
-        String duty_name = proposer.getDuty_name();
+        int rank = proposer.getRank();
         Staff_Job auditor;
-        if(duty_name.equals(Constant.DUTY_MINISTER) || duty_name.equals(Constant.DUTY_HEAD))
+        if(rank == Constant.DUTY_MINISTER)
         {
             auditor = staff_jobDAO.getGeneral_Manager();
+            System.out.println("总经理：" + auditor.getStaff_name());
         }
         else
         {
             auditor = staff_jobDAO.getManagerByDept_name(dept_name);
+            System.out.println("部门经理：" + auditor.getStaff_name());
         }
         leave_info.setAuditor_id(auditor.getId());
         leave_info.setAuditor_name(auditor.getStaff_name());
@@ -77,20 +79,44 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
     public Leave_Info allowLeave(Leave_Info leave_info)
     {
         Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
-        leave_query.setResult(leave_info.getResult());
-        leave_query.setValid(Constant.LEAVE_INFO_VALID);
         leave_query.setHandle_time(new Date(System.currentTimeMillis()));
-        leave_infoDAO.updateLeave_Info(leave_query);
 
-        Message message = new Message();
-        message.setSender_name(leave_query.getAuditor_name());
-        message.setReceiver_id(leave_query.getProposer_id());
-        message.setGenerate_time(new Date(System.currentTimeMillis()));
-        message.setMessage_name(Constant.MESSAGE_ALLOW_NAME);
-        message.setType(Constant.MESSAGE_LEAVE_ALLOW_TYPE);
-        message.setContent(Constant.MESSAGE_ALLOW_CONTENT);
-        message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
-        messageDAO.addMessage(message);
+        Staff_Job staff_job = (Staff_Job)ActionContext.getContext().getSession().get(Constant.STAFF_LOGIN);
+
+        if(leave_query.getDays() > Constant.DAYS_THRESHOLD && staff_job.getRank() == Constant.DUTY_MINISTER && leave_query.getResult() == Constant.LEAVE_INFO_ALLPY_RESULT)//大于指定天数，且当前为部门经理初次审核，那么应该转交给总经理
+        {
+            leave_query.setResult(Constant.LEAVE_INFO_DELIVER_RESULT);
+            Staff_Job auditor = staff_jobDAO.getGeneral_Manager();
+            leave_query.setAuditor_id(auditor.getId());
+            leave_infoDAO.updateLeave_Info(leave_query);
+
+            Message message = new Message();
+            message.setSender_name(leave_query.getAuditor_name());//先用原来的审核人，也就是当前用户的名字给总经理发信
+            leave_query.setAuditor_name(auditor.getStaff_name());//然后将总经理的名字设为审核人
+            message.setReceiver_id(auditor.getId());
+            message.setGenerate_time(new Date(System.currentTimeMillis()));
+            message.setMessage_name(Constant.MESSAGE_DELIVER_NAME);
+            message.setType(Constant.MESSAGE_LEAVE_DELIVER_TYPE);
+            message.setContent(String.valueOf(leave_info.getId()));
+            message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
+            messageDAO.addMessage(message);
+        }
+        else
+        {
+            leave_query.setResult(Constant.LEAVE_INFO_ALLOW_RESULT);
+            leave_query.setValid(Constant.LEAVE_INFO_VALID);
+            leave_infoDAO.updateLeave_Info(leave_query);
+
+            Message message = new Message();
+            message.setSender_name(leave_query.getAuditor_name());
+            message.setReceiver_id(leave_query.getProposer_id());
+            message.setGenerate_time(new Date(System.currentTimeMillis()));
+            message.setMessage_name(Constant.MESSAGE_ALLOW_NAME);
+            message.setType(Constant.MESSAGE_LEAVE_ALLOW_TYPE);
+            message.setContent(Constant.MESSAGE_ALLOW_CONTENT);
+            message.setFlag(Constant.MESSAGE_UNREAD_FLAG);
+            messageDAO.addMessage(message);
+        }
 
         return leave_query;
     }
@@ -100,7 +126,7 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
     public Leave_Info rejectLeave(Leave_Info leave_info)
     {
         Leave_Info leave_query = leave_infoDAO.getLeave_InfoById(leave_info.getId());
-        leave_query.setResult(leave_info.getResult());
+        leave_query.setResult(Constant.LEAVE_INFO_REJECT_RESULT);
         leave_query.setValid(Constant.LEAVE_INFO_VALID);
         leave_query.setHandle_time(new Date(System.currentTimeMillis()));
         leave_infoDAO.updateLeave_Info(leave_query);
@@ -133,9 +159,19 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         leave_info.setResult(Constant.LEAVE_INFO_RESUMPTION_RESULT);
         leave_infoDAO.updateLeave_Info(leave_info);
 
+        Staff_Job staff_job = (Staff_Job)ActionContext.getContext().getSession().get(Constant.STAFF_LOGIN);
+        Staff_Job receiver;
+        if(staff_job.getRank() == Constant.DUTY_MINISTER)
+        {
+            receiver = staff_jobDAO.getGeneral_Manager();
+        }
+        else
+        {
+            receiver = staff_jobDAO.getManagerByDept_name(staff_job.getDept_name());
+        }
         Message message = new Message();
         message.setSender_name(leave_info.getProposer_name());
-        message.setReceiver_id(leave_info.getAuditor_id());
+        message.setReceiver_id(receiver.getId());
         message.setGenerate_time(new Date(System.currentTimeMillis()));
         message.setMessage_name(Constant.MESSAGE_RESUMPTION_NAME);
         message.setType(Constant.MESSAGE_LEAVE_RESUMPTION_TYPE);
@@ -153,7 +189,9 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
         leave_infoDAO.updateLeave_Info(leave_query);
 
         Message message = new Message();
-        message.setSender_name(leave_query.getAuditor_name());
+        Staff_Job staff_job = (Staff_Job)ActionContext.getContext().getSession().get(Constant.STAFF_LOGIN);
+
+        message.setSender_name(staff_job.getStaff_name());
         message.setReceiver_id(leave_query.getProposer_id());
         message.setGenerate_time(new Date(System.currentTimeMillis()));
         message.setMessage_name(Constant.MESSAGE_ARCHIVE_NAME);

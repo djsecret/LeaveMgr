@@ -54,7 +54,7 @@
                     <li>
                         <!-- Start Freebie -->
                         <ul class="expmenu">
-                            <s:if test="%{#session.staff_login.duty_name != '总经理'}">
+                            <s:if test="%{#session.staff_login.rank != 1}">
                                 <li>
                                     <div class="header">
                                         <span class="label" style="background-image: url(images/messages.png);">请销假</span>
