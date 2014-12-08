@@ -1,11 +1,14 @@
 package com.neu.action.leave;
 
+import com.neu.common.Constant;
 import com.neu.pojo.Leave_Info;
 import com.neu.service.Leave_InfoService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Controller
 public class AllowLeaveAction extends ActionSupport
@@ -40,8 +43,18 @@ public class AllowLeaveAction extends ActionSupport
     @Override
     public String execute() throws Exception
     {
+        Map session = ActionContext.getContext().getSession();
+        String oldToken = (String)session.get(Constant.ALLOW_SESSION_TOKEN);
+        if(token != null && token.equals(oldToken))
+        {
+            session.remove(Constant.ALLOW_SESSION_TOKEN);
+            leave_info = leave_infoService.allowLeave(leave_info);
+            return SUCCESS;
+        }
+        else
+        {
+            return ERROR;
+        }
 
-        leave_info = leave_infoService.allowLeave(leave_info);
-        return SUCCESS;
     }
 }

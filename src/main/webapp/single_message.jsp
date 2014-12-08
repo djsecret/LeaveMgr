@@ -31,7 +31,7 @@
             请假人：<s:property value="leave_info.proposer_name"/><br>
             起始时间：<s:date name="leave_info.begin_time" format="yyyy年MM月dd日"/><br>
             请假天数：<s:property value="leave_info.days"/>天<br>
-            <div style="max-width: 480px;">
+            <div style="width: 450px">
                 事由：<s:property  value="leave_info.reason"/>
             </div><br>
 
@@ -47,12 +47,14 @@
                     <a href="
                     <s:url action="allowLeave">
                         <s:param name="leave_info.id" value="leave_info.id"/>
+                        <s:param name="token" value="#session.allow_session_token"/>
                     </s:url>"
                             >审核通过</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="
                     <s:url action="rejectLeave">
                         <s:param name="leave_info.id" value="leave_info.id"/>
+                        <s:param name="token" value="#session.reject_session_token"/>
                     </s:url>"
                             >否决</a>
                 </s:if>
@@ -71,6 +73,7 @@
                     <a href="
                     <s:url action="archiveLeave">
                         <s:param name="leave_info.id" value="leave_info.id"/>
+                        <s:param name="token" value="#session.archive_session_token"/>
                     </s:url>"
                             >销假归档</a>
                 </s:elseif>
@@ -85,18 +88,27 @@
                         <a href="
                             <s:url action="allowLeave">
                                 <s:param name="leave_info.id" value="leave_info.id"/>
+                                <s:param name="token" value="#session.allow_session_token"/>
                             </s:url>"
                                 >审核通过</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="
                             <s:url action="rejectLeave">
                                 <s:param name="leave_info.id" value="leave_info.id"/>
+                                <s:param name="token" value="#session.reject_session_token"/>
                             </s:url>"
                                 >否决</a>
                     </s:if>
                 </s:elseif>
             </div>
         </s:if>
+        <s:else>
+            <br>
+            <br>
+            <div class="info">
+                <s:property value="message.content"/><br>
+            </div>
+        </s:else>
         <br>
         </div>
 

@@ -8,6 +8,10 @@ public class Constant
     public static final String STAFF_LOGIN = "staff_login";
     public static final String UNREAD_MESSAGE_NUM = "unread_message_number";
 
+    public static final String ALLOW_SESSION_TOKEN = "allow_session_token";
+    public static final String REJECT_SESSION_TOKEN = "reject_session_token";
+    public static final String ARCHIVE_SESSION_TOKEN = "archive_session_token";
+
     /*duty*/
     public static final int DUTY_GENERAL_MANAGER = 1;
     public static final int DUTY_MINISTER = 3;

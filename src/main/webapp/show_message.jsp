@@ -40,7 +40,7 @@
 
     <table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
         <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/tool_bg104473.gif)">
-            <td width="8%" align="center"><a onclick="doDeleteAll();">删除</a></td>
+            <td width="8%" align="center"><a style="color:#040205;" href="javascript:void(0);" onclick="doDeleteAll();">删除</a></td>
             <td width="10%">发信人</td>
             <td width="35%">消息名称</td>
             <td width="25%">发送时间</td>

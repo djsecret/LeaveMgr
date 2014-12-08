@@ -48,9 +48,11 @@
         </action>
         <action name="allowLeave" class="allowLeaveAction">
             <result name="success">leave_info_result.jsp</result>
+            <result name="error" type="chain">showMessage</result>
         </action>
         <action name="rejectLeave" class="rejectLeaveAction">
             <result name="success">leave_info_result.jsp</result>
+            <result name="error" type="chain">showMessage</result>
         </action>
         <action name="showLeave" class="showLeaveAction">
             <result name="success">show_leave.jsp</result>
@@ -60,6 +62,7 @@
         </action>
         <action name="archiveLeave" class="archiveLeaveAction">
             <result name="success">leave_info_result.jsp</result>
+            <result name="error" type="chain">showMessage</result>
         </action>
 
         <action name="showStaff" class="showStaffAction">

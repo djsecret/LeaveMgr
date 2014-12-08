@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Controller
 public class GetSingleMessageAction extends ActionSupport
@@ -46,16 +47,22 @@ public class GetSingleMessageAction extends ActionSupport
     @Override
     public String execute() throws Exception
     {
+        Map session = ActionContext.getContext().getSession();
         message = messageService.getMessage(message.getId());
         if(message.getFlag() == Constant.MESSAGE_UNREAD_FLAG)
         {
             messageService.setMessageRead(message);
-            int unreadNum = (Integer) ActionContext.getContext().getSession().get(Constant.UNREAD_MESSAGE_NUM);
-            ActionContext.getContext().getSession().put(Constant.UNREAD_MESSAGE_NUM,unreadNum-1);
+            int unreadNum = (Integer) session.get(Constant.UNREAD_MESSAGE_NUM);
+            session.put(Constant.UNREAD_MESSAGE_NUM, unreadNum - 1);
         }
 
         if(message.getType() == Constant.MESSAGE_LEAVE_APPLY_TYPE || message.getType() == Constant.MESSAGE_LEAVE_RESUMPTION_TYPE || message.getType() == Constant.MESSAGE_LEAVE_DELIVER_TYPE)
         {
+            //手动防止重复提交
+            session.put(Constant.ALLOW_SESSION_TOKEN,String.valueOf(Math.random()));
+            session.put(Constant.REJECT_SESSION_TOKEN,String.valueOf(Math.random()));
+            session.put(Constant.ARCHIVE_SESSION_TOKEN,String.valueOf(Math.random()));
+
             int leave_infoID = Integer.parseInt(message.getContent());
             leave_info = leave_infoService.getLeave_Info(leave_infoID);
         }
