@@ -20,4 +20,6 @@ public interface Leave_InfoService
     void resumptionFromLeave(int id);
 
     Leave_Info archiveLeave(Leave_Info leave_info);
+
+    void cancelLeave(int id);
 }

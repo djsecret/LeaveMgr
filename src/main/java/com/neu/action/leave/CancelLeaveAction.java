@@ -7,12 +7,12 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
 
 @Controller
-public class ResumptionFromLeaveAction extends ActionSupport
+public class CancelLeaveAction extends ActionSupport
 {
-    private int id;
-
     @Resource
     private Leave_InfoService leave_infoService;
+
+    private int id;
 
     public int getId()
     {
@@ -27,7 +27,7 @@ public class ResumptionFromLeaveAction extends ActionSupport
     @Override
     public String execute() throws Exception
     {
-        leave_infoService.resumptionFromLeave(id);
+        leave_infoService.cancelLeave(id);
         return SUCCESS;
     }
 }

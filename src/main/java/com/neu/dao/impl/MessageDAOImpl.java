@@ -26,7 +26,7 @@ public class MessageDAOImpl implements MessageDAO
     @Override
     public List<Message> getMessageListByReceiverId(int receiver_id)
     {
-        String hql = "from Message m where m.receiver_id = ?";
+        String hql = "from Message m where m.receiver_id = ? order by m.generate_time desc";
         return sessionFactory.getCurrentSession().createQuery(hql).setParameter(0, receiver_id).list();
     }
 
@@ -68,5 +68,18 @@ public class MessageDAOImpl implements MessageDAO
 
         q.setParameterList("alist",ids);
         q.executeUpdate();
+    }
+
+    @Override
+    public Message getMessageByLeave_Info(int messageLeaveApplyType, String content)
+    {
+        String hql = "from Message m where m.type = ? and m.content = ?";
+        return (Message)sessionFactory.getCurrentSession().createQuery(hql).setParameter(0, messageLeaveApplyType).setParameter(1,content).uniqueResult();
+    }
+
+    @Override
+    public void delete(Message message)
+    {
+        sessionFactory.getCurrentSession().delete(message);
     }
 }

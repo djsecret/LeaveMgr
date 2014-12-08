@@ -202,4 +202,25 @@ public class Leave_InfoServiceImpl implements Leave_InfoService
 
         return leave_query;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void cancelLeave(int id)
+    {
+        Leave_Info leave_info = leave_infoDAO.getLeave_InfoById(id);
+
+        //如果之前发出的申请消息还没有被查看，那么就把消息删除，然后把请假条也删了
+        Message message = messageDAO.getMessageByLeave_Info(Constant.MESSAGE_LEAVE_APPLY_TYPE,String.valueOf(leave_info.getId()));
+
+        if(message.getFlag() == Constant.MESSAGE_UNREAD_FLAG)
+        {
+            messageDAO.delete(message);
+            leave_infoDAO.delete(leave_info);
+        }
+        else
+        {
+            leave_info.setResult(Constant.LEAVE_INFO_CANCEL_RESULT);
+            leave_infoDAO.updateLeave_Info(leave_info);
+        }
+    }
 }

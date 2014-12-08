@@ -49,6 +49,7 @@ public class Constant
     public static final int LEAVE_INFO_ARCHIVE_RESULT = 3;
     public static final int LEAVE_INFO_ALLPY_RESULT = 4;
     public static final int LEAVE_INFO_DELIVER_RESULT = 5;
+    public static final int LEAVE_INFO_CANCEL_RESULT = 6;
 
 
 

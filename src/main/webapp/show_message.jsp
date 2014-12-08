@@ -39,7 +39,7 @@
 <div class="topline"></div>
 
     <table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
-        <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/tool_bg104473.gif)">
+        <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/navbar.gif)">
             <td width="8%" align="center"><a style="color:#040205;" href="javascript:void(0);" onclick="doDeleteAll();">删除</a></td>
             <td width="10%">发信人</td>
             <td width="35%">消息名称</td>
@@ -49,7 +49,7 @@
 
         <s:iterator value="messages" id="message">
             <s:if test="flag == @com.neu.common.Constant@MESSAGE_UNREAD_FLAG">
-                <tr style="color:#040205; border-bottom: solid rgba(178, 174, 186, 0.97) 1px" >
+                <tr style="color:rgb(7, 7, 199); border-bottom: solid rgba(178, 174, 186, 0.97) 1px" >
                     <td>
                         <div align="center">
                             <input type="checkbox" name="checkbox2" value="<s:property value="id"/>" />
@@ -59,14 +59,14 @@
                         <s:property value="sender_name"/>
                     </td>
                     <td>
-                        <a style="color:#040205;" href="
+                        <a style="color:rgb(7, 7, 199);" href="
                         <s:url action="getSingleMessage">
                             <s:param name="message.id" value="#message.id"/>
                         </s:url>"
                                 ><s:property value="message_name"/></a>
                     </td>
                     <td>
-                        <a style="color:#040205;" href="
+                        <a style="color:rgb(7, 7, 199);" href="
                         <s:url action="getSingleMessage">
                             <s:param name="message.id" value="#message.id"/>
                         </s:url>"

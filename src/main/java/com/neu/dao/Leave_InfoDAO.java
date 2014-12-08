@@ -11,4 +11,6 @@ public interface Leave_InfoDAO
     Leave_Info getLeave_InfoById(int id);
     void updateLeave_Info(Leave_Info leave_info);
     List<Leave_Info> getLeave_InfosByProposer_Id(int proposer_id);
+
+    void delete(Leave_Info leave_info);
 }

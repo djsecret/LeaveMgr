@@ -67,6 +67,10 @@
                     请假通过<br>
                 </s:elseif>
 
+                <s:elseif test="leave_info.result == @com.neu.common.Constant@LEAVE_INFO_CANCEL_RESULT">
+                    申请取消<br>
+                </s:elseif>
+
                 <s:elseif test="leave_info.result == @com.neu.common.Constant@LEAVE_INFO_RESUMPTION_RESULT">
                     销假待审核<br>
                     <br>
@@ -114,7 +118,7 @@
 
     </div>
     <br>
-    <a style="margin-left: 200px;" href="showMessage">返回</a>
+    <a href="showMessage" title="返回"><img src="images/back.png" width="60px;" height="60px;"></a>
     <br>
 
 </body>

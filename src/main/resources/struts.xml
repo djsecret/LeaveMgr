@@ -64,6 +64,9 @@
             <result name="success">leave_info_result.jsp</result>
             <result name="error" type="chain">showMessage</result>
         </action>
+        <action name="cancelLeave" class="cancelLeaveAction">
+            <result name="success" type="chain">showLeave</result>
+        </action>
 
         <action name="showStaff" class="showStaffAction">
             <result name="success">show_staff.jsp</result>
