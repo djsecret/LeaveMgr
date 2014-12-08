@@ -12,6 +12,18 @@ public class AllowLeaveAction extends ActionSupport
 {
     private Leave_Info leave_info;
 
+    private String token;//手动防止表单重复提交
+
+    public String getToken()
+    {
+        return token;
+    }
+
+    public void setToken(String token)
+    {
+        this.token = token;
+    }
+
     @Resource
     private Leave_InfoService leave_infoService;
 
@@ -28,6 +40,7 @@ public class AllowLeaveAction extends ActionSupport
     @Override
     public String execute() throws Exception
     {
+
         leave_info = leave_infoService.allowLeave(leave_info);
         return SUCCESS;
     }

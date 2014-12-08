@@ -52,7 +52,7 @@
                 <tr style="color:#040205; border-bottom: solid rgba(178, 174, 186, 0.97) 1px" >
                     <td>
                         <div align="center">
-                            <input type="checkbox" name="checkbox2" value="id" />
+                            <input type="checkbox" name="checkbox2" value="<s:property value="id"/>" />
                         </div>
                     </td>
                     <td>

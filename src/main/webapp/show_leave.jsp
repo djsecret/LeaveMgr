@@ -5,6 +5,7 @@
     <title>请假申请记录</title>
 </head>
 <body>
+<div class="topline"></div>
 <table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
     <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/tool_bg104473.gif)">
         <td align="center">起始时间</td>

@@ -21,6 +21,7 @@ public class DeleteAllAction extends ActionSupport
         Integer[] ids = new Integer[splits.length];
         for(int i = 0; i < splits.length; ++i)
         {
+            System.out.println("string:" + splits[i].trim());
             ids[i] = Integer.parseInt(splits[i].trim());
         }
 

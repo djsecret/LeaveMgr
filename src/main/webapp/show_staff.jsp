@@ -11,6 +11,7 @@
 </head>
 <body>
 <h3>个人信息：</h3>
+<br>
 员工编号：<s:property value="staff_info.staff_id"/><br>
 &nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;：<s:property value="staff_info.staff_name"/><br>
 身份证号：<s:property value="staff_info.identity_card"/><br>
