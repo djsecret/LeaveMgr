@@ -9,7 +9,7 @@
 <head>
     <base href="<%=basePath%>">
     <title><s:property value="message.message_name"/></title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
 </head>
 <body>
     发送人：<s:property value="message.sender_name"/>&nbsp;&nbsp;&nbsp;&nbsp;发送时间：<s:date name="message.generate_time" format="yyyy年MM月dd日 HH:mm:ss"/><br>
@@ -45,14 +45,14 @@
                     待审核<br>
                     <br>
                     <a href="
-                    <s:url action="allowLeave">
+                    <s:url action="allowLeave" namespace="/leave">
                         <s:param name="leave_info.id" value="leave_info.id"/>
                         <s:param name="token" value="#session.allow_session_token"/>
                     </s:url>"
                             >审核通过</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="
-                    <s:url action="rejectLeave">
+                    <s:url action="rejectLeave" namespace="/leave">
                         <s:param name="leave_info.id" value="leave_info.id"/>
                         <s:param name="token" value="#session.reject_session_token"/>
                     </s:url>"
@@ -75,7 +75,7 @@
                     销假待审核<br>
                     <br>
                     <a href="
-                    <s:url action="archiveLeave">
+                    <s:url action="archiveLeave" namespace="/leave">
                         <s:param name="leave_info.id" value="leave_info.id"/>
                         <s:param name="token" value="#session.archive_session_token"/>
                     </s:url>"
@@ -90,14 +90,14 @@
                     <br>
                     <s:if test="%{#session.staff_login.rank == 1}">
                         <a href="
-                            <s:url action="allowLeave">
+                            <s:url action="allowLeave" namespace="/leave">
                                 <s:param name="leave_info.id" value="leave_info.id"/>
                                 <s:param name="token" value="#session.allow_session_token"/>
                             </s:url>"
                                 >审核通过</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="
-                            <s:url action="rejectLeave">
+                            <s:url action="rejectLeave" namespace="/leave">
                                 <s:param name="leave_info.id" value="leave_info.id"/>
                                 <s:param name="token" value="#session.reject_session_token"/>
                             </s:url>"
@@ -118,7 +118,7 @@
 
     </div>
     <br>
-    <a href="showMessage" title="返回"><img src="images/back.png" width="60px;" height="60px;"></a>
+    <a href="/message/showMessage" title="返回"><img src="../images/back.png" width="60px;" height="60px;"></a>
     <br>
 
 </body>

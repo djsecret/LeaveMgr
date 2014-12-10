@@ -10,7 +10,7 @@
     <title>登录</title>
 </head>
 <body>
-<s:form action="login" namespace="/">
+<s:form action="login" namespace="/login">
     <s:textfield name="staff_id" label="员工编号"/>
     <s:password name="password" label="密码"/>
     <s:submit value="确定"/>

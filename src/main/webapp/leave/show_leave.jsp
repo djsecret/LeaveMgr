@@ -7,7 +7,7 @@
 <body>
 <div class="topline"></div>
 <table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
-    <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/navbar.gif); color: rgba(14, 14, 19, 0.61);">
+    <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(../images/navbar.gif); color: rgba(14, 14, 19, 0.61);">
         <td width="20%" align="center">起始时间</td>
         <td width="10%">请假天数</td>
         <td width="30%">申请时间</td>
@@ -56,14 +56,14 @@
             <td>
                 <s:if test="valid == @com.neu.common.Constant@LEAVE_INFO_VALID && result == @com.neu.common.Constant@LEAVE_INFO_ALLOW_RESULT">
                     <a href="
-                        <s:url action="resumptionfromleave">
+                        <s:url action="resumptionfromleave" namespace="/leave">
                             <s:param name="id" value="#leave.id"/>
                         </s:url>" >销假
                     </a>
                 </s:if>
                 <s:elseif test="valid == @com.neu.common.Constant@LEAVE_INFO_INVALID && result == @com.neu.common.Constant@LEAVE_INFO_ALLPY_RESULT">
                     <a href="
-                        <s:url action="cancelLeave">
+                        <s:url action="cancelLeave" namespace="/leave">
                             <s:param name="id" value="#leave.id"/>
                         </s:url>" >取消
                     </a>

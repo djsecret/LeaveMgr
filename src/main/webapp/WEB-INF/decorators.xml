@@ -6,8 +6,7 @@
 		<pattern>/css/*</pattern>
 		<pattern>/js/*</pattern>
 		<pattern>/image/*</pattern>
-        <pattern>/login.jsp</pattern>
-        <pattern>/logout*</pattern>
+        <pattern>/login*</pattern>
         <pattern>/HelloWorld/*</pattern>
 	</excludes>
 

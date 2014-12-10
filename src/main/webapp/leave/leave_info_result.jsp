@@ -59,7 +59,7 @@
     </div>
 </div>
         <br>
-        <a href="showMessage" title="返回"><img src="images/back.png" width="60px;" height="60px;"></a>
+        <a href="/message/showMessage" title="返回"><img src="../images/back.png" width="60px;" height="60px;"></a>
 
 </body>
 </html>

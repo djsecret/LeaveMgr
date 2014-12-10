@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="leave" extends="struts-base" namespace="/leave">
+
+        <action name="addLeave" class="addLeaveAction">
+            <result name="success" type="chain">showLeave</result>
+        </action>
+        <action name="allowLeave" class="allowLeaveAction">
+            <result name="success">leave_info_result.jsp</result>
+            <result name="error" type="chain">/message/showMessage</result>
+        </action>
+        <action name="rejectLeave" class="rejectLeaveAction">
+            <result name="success">leave_info_result.jsp</result>
+            <result name="error" type="chain">/message/showMessage</result>
+        </action>
+        <action name="showLeave" class="showLeaveAction">
+            <result name="success">show_leave.jsp</result>
+        </action>
+        <action name="resumptionfromleave" class="resumptionFromLeaveAction">
+            <result name="success" type="chain">showLeave</result>
+        </action>
+        <action name="archiveLeave" class="archiveLeaveAction">
+            <result name="success">leave_info_result.jsp</result>
+            <result name="error" type="chain">/message/showMessage</result>
+        </action>
+        <action name="cancelLeave" class="cancelLeaveAction">
+            <result name="success" type="chain">showLeave</result>
+        </action>
+
+    </package>
+</struts>

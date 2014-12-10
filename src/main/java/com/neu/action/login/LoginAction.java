@@ -18,7 +18,7 @@ public class LoginAction extends ActionSupport
 
     public String execute()
     {
-        System.out.println(staff_id + "login.");
+        //System.out.println(staff_id + "login.");
         Staff_Job staff_job = new Staff_Job();
         staff_job.setStaff_id(staff_id);
         staff_job.setPassword(password);

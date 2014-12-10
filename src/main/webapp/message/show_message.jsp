@@ -28,7 +28,7 @@
             }
             else if (confirm("您选中了【" + count + "】记录，确定删除？"))
             {
-                var url = "deleteAllMessage.action?ids=" + ids;
+                var url = "/message/deleteAllMessage.action?ids=" + ids;
                 window.location = url;
             }
         }
@@ -39,7 +39,7 @@
 <div class="topline"></div>
 
     <table style=" margin:0 auto; border-collapse: collapse; border: none;" width="100%" align="center">
-        <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(images/navbar.gif)">
+        <tr style="height: 30px; border-bottom: solid #b2aeba 1px;background-image: url(../images/navbar.gif)">
             <td width="8%" align="center"><a style="color:#040205;" href="javascript:void(0);" onclick="doDeleteAll();">删除</a></td>
             <td width="10%">发信人</td>
             <td width="35%">消息名称</td>
@@ -60,14 +60,14 @@
                     </td>
                     <td>
                         <a style="color:rgb(7, 7, 199);" href="
-                        <s:url action="getSingleMessage">
+                        <s:url action="getSingleMessage" namespace="/message">
                             <s:param name="message.id" value="#message.id"/>
                         </s:url>"
                                 ><s:property value="message_name"/></a>
                     </td>
                     <td>
                         <a style="color:rgb(7, 7, 199);" href="
-                        <s:url action="getSingleMessage">
+                        <s:url action="getSingleMessage" namespace="/message">
                             <s:param name="message.id" value="#message.id"/>
                         </s:url>"
                                 ><s:date name="generate_time" format="yyyy-MM-dd HH:mm:ss"/></a>
@@ -76,10 +76,10 @@
 
                     <td>
                         <a href="
-                        <s:url action="deleteMessage">
+                        <s:url action="deleteMessage" namespace="/message">
                             <s:param name="id" value="#message.id"/>
                         </s:url>"
-                                ><img src="images/3286.png" title="删除消息" width="18px" height="20px"></a>
+                                ><img src="../images/3286.png" title="删除消息" width="18px" height="20px"></a>
                     </td>
                 </tr>
             </s:if>
@@ -96,14 +96,14 @@
                     </td>
                     <td>
                         <a style="color:#85828b;" href="
-                        <s:url action="getSingleMessage">
+                        <s:url action="getSingleMessage" namespace="/message">
                             <s:param name="message.id" value="#message.id"/>
                         </s:url>"
                                 ><s:property value="message_name"/></a>
                     </td>
                     <td>
                         <a style="color:#85828b;" href="
-                        <s:url action="getSingleMessage">
+                        <s:url action="getSingleMessage" namespace="/message">
                             <s:param name="message.id" value="#message.id"/>
                         </s:url>"
                                 ><s:date name="generate_time" format="yyyy-MM-dd HH:mm:ss"/></a>
@@ -112,10 +112,10 @@
 
                     <td>
                         <a href="
-                        <s:url action="deleteMessage">
+                        <s:url action="deleteMessage" namespace="/message">
                             <s:param name="id" value="#message.id"/>
                         </s:url>"
-                                ><img title="删除消息" src="images/3286.png" width="18px" height="20px"></a>
+                                ><img title="删除消息" src="../images/3286.png" width="18px" height="20px"></a>
                     </td>
                 </tr>
 

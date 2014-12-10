@@ -5,78 +5,9 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
-    <package name="struts2" extends="struts-default" namespace="/">
-        <interceptors>
-            <interceptor name="loginInterceptor" class="com.neu.common.LoginInterceptor"/>
-            <interceptor-stack name="loginStack">
-                <interceptor-ref name="loginInterceptor"/>
-                <interceptor-ref name="defaultStack"/>
-            </interceptor-stack>
-        </interceptors>
-
-        <default-interceptor-ref name="loginStack"/>
-
-        <global-results>
-            <result name="login">login.jsp</result>
-        </global-results>
-
-        <action name="login" class="loginAction">
-            <result name="success" type="chain">showMessage</result>
-            <result name="input">login.jsp</result>
-            <interceptor-ref name="defaultStack"/>
-        </action>
-        <action name="logout" class="logoutAction">
-            <result name="success">login.jsp</result>
-        </action>
-
-        <action name="showMessage" class="showMessageAction">
-            <result name="success">show_message.jsp</result>
-        </action>
-        <action name="getSingleMessage" class="getSingleMessageAction">
-            <result name="success">single_message.jsp</result>
-        </action>
-        <action name="deleteMessage" class="deleteMessageAction">
-            <result name="success" type="chain">showMessage</result>
-        </action>
-        <action name="deleteAllMessage" class="deleteAllAction">
-            <result name="success" type="chain">showMessage</result>
-        </action>
-
-        <action name="addLeave" class="addLeaveAction">
-            <result name="success" type="chain">showLeave</result>
-        </action>
-        <action name="allowLeave" class="allowLeaveAction">
-            <result name="success">leave_info_result.jsp</result>
-            <result name="error" type="chain">showMessage</result>
-        </action>
-        <action name="rejectLeave" class="rejectLeaveAction">
-            <result name="success">leave_info_result.jsp</result>
-            <result name="error" type="chain">showMessage</result>
-        </action>
-        <action name="showLeave" class="showLeaveAction">
-            <result name="success">show_leave.jsp</result>
-        </action>
-        <action name="resumptionfromleave" class="resumptionFromLeaveAction">
-            <result name="success" type="chain">showLeave</result>
-        </action>
-        <action name="archiveLeave" class="archiveLeaveAction">
-            <result name="success">leave_info_result.jsp</result>
-            <result name="error" type="chain">showMessage</result>
-        </action>
-        <action name="cancelLeave" class="cancelLeaveAction">
-            <result name="success" type="chain">showLeave</result>
-        </action>
-
-        <action name="showStaff" class="showStaffAction">
-            <result name="success">show_staff.jsp</result>
-        </action>
-        <action name="editStaff" class="editStaffAction">
-            <result name="success">show_staff.jsp</result>
-        </action>
-        <action name="updatePassword" class="updatePasswordAction">
-            <result name="success">success.jsp</result>
-            <result name="input">update_password.jsp</result>
-        </action>
-    </package>
+    <include file="struts_base.xml"/>
+    <include file="struts_leave.xml"/>
+    <include file="struts_login.xml"/>
+    <include file="struts_message.xml"/>
+    <include file="struts_staff.xml"/>
 </struts>

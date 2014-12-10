@@ -24,7 +24,7 @@
 <br>
 
 <a href="
-    <s:url value="edit_staff.jsp">
+    <s:url value="/staff/edit_staff.jsp">
         <s:param name="id" value="staff_info.id"/>
         <s:param name="staff_id" value="staff_info.staff_id"/>
         <s:param name="staff_name" value="staff_info.staff_name"/>

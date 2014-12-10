@@ -27,27 +27,27 @@
 </head>
 <body>
 <s:if test="%{#session.staff_login == null}">
-    <s:a href="login.jsp" cssStyle="float: right">登录</s:a>
+    <s:a href="/login/login.jsp" cssStyle="float: right">登录</s:a>
 </s:if>
 
 <s:if test="%{#session.staff_login != null}">
     <span style="float: right;margin-right: 10px;">
         <s:property value="#session.staff_login.staff_name"/>&nbsp;您好！
-        <s:a action="showMessage"><img width="15px" height="15px" src="images/message.png" style="padding-top: 3px;">消息</s:a>&nbsp;&nbsp;&nbsp;
+        <s:a action="showMessage" namespace="/message"><img width="15px" height="15px" src="images/message.png" style="padding-top: 3px;">消息</s:a>&nbsp;&nbsp;&nbsp;
         <s:if test="%{#session.unread_message_number > 0}">
             <div class="float" id="float">
-                <p><s:property value="#session.unread_message_number"/>条新消息，<a href="showMessage">查看消息</a></p>
+                <p><s:property value="#session.unread_message_number"/>条新消息，<a href="message/showMessage.action">查看消息</a></p>
                 <a href="javascript:void(0)" onclick="cls(this)" title="关闭" id="" class="close-ico">关闭</a>
             </div>
         </s:if>
-        <s:a action="logout">注销</s:a>
+        <s:a action="logout" namespace="/login">注销</s:a>
 
     </span>
 
 </s:if>
 <table>
     <tr>
-        <td width="15%"></td>
+        <td width="5%"></td>
         <td width="20%" valign="top">
             <div id="content">
                 <ul id="expmenu-freebie">
@@ -57,23 +57,23 @@
                             <s:if test="%{#session.staff_login.rank != 1}">
                                 <li>
                                     <div class="header">
-                                        <span class="label" style="background-image: url(images/messages.png);">请销假</span>
+                                        <span class="label" style="background-image: url(../images/messages.png);">请销假</span>
                                         <span class="arrow up"></span>
                                     </div>
                                     <ul class="menu">
-                                        <li class="selected"><a href="addLeave.jsp">新建请假申请</a></li>
-                                        <li><a href="showLeave">请假申请记录</a></li>
+                                        <li class="selected"><a href="/leave/addLeave.jsp">新建请假申请</a></li>
+                                        <li><a href="/leave/showLeave">请假申请记录</a></li>
                                     </ul>
                                 </li>
                             </s:if>
                             <li>
                                 <div class="header">
-                                    <span class="label" style="background-image: url(images/user.png);">个人信息维护</span>
+                                    <span class="label" style="background-image: url(../images/user.png);">个人信息维护</span>
                                     <span class="arrow up"></span>
                                 </div>
                                 <ul class="menu">
-                                    <li><a href="showStaff">个人信息</a></li>
-                                    <li><a href="update_password.jsp">修改密码</a></li>
+                                    <li><a href="/staff/showStaff">个人信息</a></li>
+                                    <li><a href="/staff/update_password.jsp">修改密码</a></li>
                                 </ul>
                             </li>
                             <!--

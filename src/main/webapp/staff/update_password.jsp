@@ -15,7 +15,7 @@
     <title>修改密码</title>
 </head>
 <body>
-    <s:form action="updatePassword" namespace="/" method="POST">
+    <s:form action="updatePassword" namespace="/staff" method="POST">
         <s:password name="password" label="原密码"/>
         <s:password name="newPassword" label="新密码"/>
         <s:password name="rePassword" label="确认新密码"/>

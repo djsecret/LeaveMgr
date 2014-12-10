@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Service("staff_jobService")
 public class Staff_JobServiceImpl implements Staff_JobService
@@ -29,12 +30,13 @@ public class Staff_JobServiceImpl implements Staff_JobService
 
         if(staff != null && staff.getPassword().equals(staff_job.getPassword()))
         {
-            ActionContext.getContext().getSession().put(Constant.STAFF_LOGIN,staff);
+            Map<String,Object> map = ActionContext.getContext().getSession();
+            //put the stuff who login to the session
+            map.put(Constant.STAFF_LOGIN,staff);
 
             int unreadMessageNum = messageDAO.getUnreadMessageNumber(staff.getId());
-            System.out.println("unreadNum = " + unreadMessageNum);
-
-            ActionContext.getContext().getSession().put(Constant.UNREAD_MESSAGE_NUM,unreadMessageNum);
+            //put total count of unread messages to the session
+            map.put(Constant.UNREAD_MESSAGE_NUM,unreadMessageNum);
 
             return true;
         }
